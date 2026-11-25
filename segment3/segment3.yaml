@@ -1,0 +1,167 @@
+module: Every Cell Gets a Receipt
+segment: 3
+title: Five Clean Cells
+description: What a small clean sample of cited cells shows, and what a sample large enough to sign off on costs in time.
+voice_notes:
+  - Conversational pace, a host thinking aloud with a colleague. Plain sentences, no rush.
+  - '"Gemini" is read "JEM-in-eye". "Google Sheets" as two plain words.'
+  - Percentages read in full, "forty-one percent", "nine and a half percent". "One in ten", "one in four" and "one time in twenty" are read as words.
+hook_status: partially supported; citations per cell and the reading that a citation records origin only are in all three briefs, and the announcement is 28 October 2026 with rollout from 20 October
+value_status: partially supported; the 41% figure is supported by computation in all three briefs, and the larger sample sizes are computed from the same formula
+slides:
+  - layout: cover
+    title: Five Clean Cells
+    subtitle: We check five cells, all five match their sources, and we sign off on the whole column.
+    narration: >
+      With thousands of values in a sheet, most teams settle the question the same way, and it feels responsible while we do it.
+      Someone opens the first five companies on the list, clicks through to each cited page, and finds the value sitting there every time.
+      Five out of five. The sheet goes into the board pack with a note that it has been checked, and everyone moves on to the next deadline.
+      You've probably signed off on a sheet like this yourself, and the habit has a lot going for it.
+      It's quick, it uses the citations the way they were meant to be used, and every one of those five values really was right.
+      So the question is what those five clean cells tell us about the hundreds of cells nobody opened.
+      Two things decide the answer. One is which five we chose, because a convenient five and a fair five can give very different answers.
+      The other is how many we checked, because five is a small number, and small numbers can look like proof when they are mostly luck.
+      Let's take the choice first, since it costs almost nothing to get right.
+    sources:
+      - claim: Teams routinely spot-check the first five rows of a column, see five matches and sign off on the rest
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-25
+  - layout: two_card
+    title: Which five cells we open
+    left:
+      head: The first five rows
+      lede: The convenient choice.
+      body:
+        - A curated list starts with the larger, better-documented companies.
+        - Their values pass more often, so they tell us least about the rest.
+    right:
+      head: Five rows at random
+      lede: The fair choice.
+      body:
+        - Give every row a random number, freeze it, and sort by it.
+        - The first five after the sort are a fair sample of the whole list.
+    takeaway: A random draw costs a few clicks and gives every company the same chance of a check.
+    narration: >
+      The convenient five are usually the first five, and the start of a list is rarely a fair picture of what comes after it.
+      A tutorial writer who teaches spreadsheet analysis calls checking only the first five or ten companies a classic mistake, and the reason is how lists get built.
+      Whoever curates a supplier or prospect list puts the names they know first, and the names they know are the larger, better-documented companies.
+      Those companies have current websites, recent filings and plenty of press coverage, so Gemini finds the right value for them more often.
+      The small, privately held firms further down the list are where a stale directory entry or the wrong subsidiary's city slips in.
+      So a check of the first five companies tests the easiest values we have and reports the result as if it covered the hardest.
+      The remedy is a decision to choose at random, and it costs a few clicks.
+      He gives every company on the list a random number, freezes those numbers so they stop changing, sorts by them, and checks whatever lands first.
+      Now every value has the same chance of being opened, and five clean cells say something about the whole list instead of its easiest stretch.
+      The next question is how much they say.
+    sources:
+      - claim: Checking only the first five or ten rows is a classic error, because the start of a curated list holds larger, better-documented companies
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-10
+      - claim: A random sample is drawn by giving every row a random number, freezing it, sorting by it and checking the first rows
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-10
+  - layout: stat_hero
+    title: How often five cells catch it
+    number: 41%
+    caption: If one cell in ten is wrong, a check of five random cells finds at least one error 41% of the time.
+    note: On a 20-row list with two wrong values, the same check finds an error about 45% of the time.
+    narration: >
+      Suppose one cell in ten across the whole list is wrong, and we open five at random.
+      Each cell we open has a nine in ten chance of being clean, so five clean draws in a row happen about six times in ten.
+      That means the check finds at least one error only about forty-one percent of the time.
+      Most of the time, a list with a real problem passes a five-cell check without a mark against it.
+      And that pass looks exactly like the pass we would get from a list with no errors at all, because the wrong values carry the same confident text and the same tidy citation as the right ones.
+      On a short list the arithmetic shifts a little. With twenty companies and two wrong values, every clean cell we draw leaves fewer clean cells behind, so the chance of catching an error rises to about forty-five percent.
+      That is still worse than a coin toss.
+      The sentence worth keeping is that a five-cell check misses a one-in-ten problem more often than it catches it.
+      So a clean result from five cells is weak evidence, and the useful next step is to ask exactly how weak.
+    sources:
+      - claim: If one cell in ten is wrong, a five-cell random check catches at least one error 41% of the time (1 minus 0.9 to the fifth, 40.95%)
+        briefs: [research-brief-claude, research-brief-gemini, research-brief-openai]
+        url: https://itl.nist.gov/div898/handbook/eda/section3/eda366i.htm
+        date: 2026-11-25
+      - claim: Five clean draws in a row happen about six times in ten (0.9 to the fifth, 59.05%)
+        briefs: [research-brief-claude, research-brief-gemini]
+      - claim: On a 20-row list with two wrong values, a five-cell check catches an error about 45% of the time (44.7%)
+        briefs: [research-brief-claude, research-brief-gemini]
+        url: https://www.itl.nist.gov/div898/handbook/glossary.htm
+        date: 2026-11-25
+  - layout: two_number
+    title: What a clean result rules out
+    before:
+      value: 45%
+      label: After five clean cells, the column could still be up to 45% wrong.
+    after:
+      value: Under 10%
+      label: After thirty clean cells, the highest error rate still possible falls under 10%.
+    note: Each figure is the highest error rate that still gives a clean result at least one time in twenty.
+    narration: >
+      Let's turn the question around, because the one a manager asks after a clean result is how bad the list could still be.
+      Five cells came back clean. What is the highest error rate that would still hand us five clean cells at least one time in twenty?
+      The answer is forty-five percent.
+      A list where almost half the values are wrong will pass a five-cell check about once in every twenty tries, so a clean five cannot rule it out.
+      The five clean cells we signed off on are consistent with almost half the list being wrong.
+      Adding cells pulls that ceiling down, slowly. At ten clean cells it sits near twenty-six percent.
+      The tutorial writer we met a moment ago puts it plainly: ten clean checks still leave room for up to about one wrong cell in three.
+      His rule of thumb runs a little high, and the careful figure is closer to one in four, though the point holds either way.
+      At twenty clean cells the ceiling is about fourteen percent.
+      Only at thirty clean cells does it fall under ten percent, to about nine and a half.
+      Thirty is where a clean result starts to mean what we hoped five meant.
+    sources:
+      - claim: Five clean random checks still allow an error rate up to 45% (exact bound 45.07%, 1 minus 0.05 to the power one fifth)
+        briefs: [research-brief-claude, research-brief-gemini]
+        contradiction: The rule of three (3 divided by n) gives 60% at five clean checks.
+        side_taken: the exact bound of 45% on the slide and in narration; the rule of three is too rough at five cells
+      - claim: Ten clean checks leave a ceiling near 26% (exact bound 25.89%)
+        briefs: [research-brief-gemini]
+        contradiction: Jose S. (Analytics Made Simple) states "Ten clean checks still leave room for up to about one wrong cell in three", the rule-of-three figure of 30%.
+        side_taken: quoted his line as his rule of thumb and stated the exact figure, about one in four, beside it
+      - claim: "Quote, exact: \"Ten clean checks still leave room for up to about one wrong cell in three.\" Jose S., Analytics Made Simple, spoken as a tutorial writer who teaches spreadsheet analysis"
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-10
+      - claim: Twenty clean checks leave a ceiling of about 14% (exact bound 13.91%)
+        briefs: [research-brief-gemini]
+      - claim: Thirty clean checks bring the ceiling under 10% (exact bound 9.50%; Shukla's rule of thumb gives about 10%)
+        briefs: [research-brief-claude, research-brief-gemini]
+        url: https://echonerve.substack.com/p/how-to-check-3000-ai-filled-spreadsheet
+        date: 2026-11-25
+  - layout: table
+    title: What each extra cell buys
+    columns: [Cells checked at random, Chance of catching one in ten, Time at under a minute a cell]
+    rows:
+      - [5 cells, Finds an error 41% of the time, About five minutes]
+      - [10 cells, Finds an error 65% of the time, About ten minutes]
+      - [20 cells, Finds an error 88% of the time, About twenty minutes]
+      - [30 cells, Finds an error 96% of the time, About half an hour]
+    takeaway: Thirty random cells take about half an hour and bring the ceiling on errors under 10%.
+    narration: >
+      Every cited cell we open takes under a minute to read against its page, so a bigger sample costs us minutes and buys a better chance of catching a problem.
+      Five random cells take about five minutes and catch a one-in-ten error rate forty-one percent of the time.
+      That makes five a smoke test, good for spotting a broken prompt before we spend a day on it, and poor grounds for a sign-off.
+      Ten cells take about ten minutes and lift the catch rate to sixty-five percent.
+      Twenty cells, about twenty minutes, reach eighty-eight percent.
+      Twenty-nine cells is where the chance of catching a one-in-ten problem first passes ninety-five percent, and thirty cells, about half an hour, give ninety-six percent along with the ceiling under ten percent we just worked out.
+      Thirty random cells is about half an hour, and that half hour is what "under ten percent" costs.
+      Which columns deserve that half hour, and which deserve more, is the next thing to settle.
+    sources:
+      - claim: Five random cells catch a one-in-ten error rate 41% of the time
+        briefs: [research-brief-claude, research-brief-gemini, research-brief-openai]
+      - claim: Ten random cells catch a one-in-ten error rate 65% of the time (65.1%), computed from the formula in research-brief-claude and research-brief-gemini
+        briefs: [research-brief-claude, research-brief-gemini]
+      - claim: Twenty random cells catch a one-in-ten error rate 88% of the time (87.8%), computed from the formula in research-brief-claude and research-brief-gemini
+        briefs: [research-brief-claude, research-brief-gemini]
+      - claim: Thirty random cells catch a one-in-ten error rate 96% of the time (95.8%), computed from the formula in research-brief-claude and research-brief-gemini
+        briefs: [research-brief-claude, research-brief-gemini]
+      - claim: Twenty-nine random cells give a 95% chance of catching a one-in-ten error rate
+        briefs: [research-brief-claude, research-brief-gemini]
+      - claim: Checking one cited cell takes under a minute, so thirty cells take roughly half an hour (the brief gives 20 to 30 minutes)
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-10
+      - claim: Five cells serve as a prompt smoke test; sign-off on a large column needs at least 30 random cells
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-10

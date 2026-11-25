@@ -1,0 +1,190 @@
+module: Every Cell Gets a Receipt
+segment: 2
+title: Where Gemini Looked
+description: What a cell's citation proves in Fill with Gemini, and the three ways a cited value can still be wrong.
+voice_notes:
+  - Conversational pace, a host thinking aloud with a colleague. Plain sentences, no rush.
+  - '"Gemini" is read "JEM-in-eye". "Percy Liang" is read "PER-see LEE-ahng". "Tianyi Zhang" is read "tee-EN-yee JAHNG". "Tow Center": "Tow" rhymes with "go". "Columbia Journalism School" as written. "EchoNerve" is read "Echo Nerve", two plain English words. "Fill with Gemini" and "Google Sheets" as plain English.'
+  - Percentages read in full, "seventy-four point five percent", "fifty-one point five percent". Years as "twenty twenty-three" and "twenty twenty-five". Counts as words, "three hundred and fifty", "three thousand".
+hook_status: partially supported; per-cell web citations and "a citation shows origin, not correctness" are supported by all three briefs, the 30 October date is not (announced 28 October 2026, rollout from 20 October)
+value_status: partially supported; the three failure modes taught here are supported (mode 1), partially supported (mode 2) and without a documented Sheets case (mode 3), said plainly
+slides:
+  - layout: cover
+    title: Where Gemini Looked
+    subtitle: We open a cell's sources, a real company page appears, and we take the value as checked.
+    narration: >
+      We left off with a long list of filled values, and every one of them now arrives with its pages attached.
+      So let's do what most of us do first. We click into a filled value, hover, and open its sources.
+      A real company page appears, with the company's name across the top. It feels finished.
+      The value has a page behind it, the page looks official, and we move on to the next one.
+      That is the moment Google designed for. Its announcement presents the citations as a way to easily audit and verify what Gemini writes.
+      And there's a quiet risk in that moment. A clickable list of sources can make us trust a value more than we did before,
+      because the presence of a receipt starts to stand in for reading it. Nobody has to decide to skip the reading. It just happens, one value at a time.
+      So before we budget a single hour of checking, we need a plain answer to one question.
+      When Gemini attaches a page to a value, what has it actually told us?
+    sources:
+      - claim: Google's announcement presents cell-level citations as a way to audit and verify Gemini-generated data
+        briefs: [research-brief-claude, research-brief-gemini]
+        url: https://workspaceupdates.googleblog.com/2026/10/fill-with-gemini-now-provides-cell-level-citations-for-web-sources-and-supports-larger-requests.html
+        date: 2026-10-28
+      - claim: A clickable Sources badge can heighten automation bias if reviewers treat the receipt as proof without reading the page
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-10
+      - claim: A user opens a cell's sources by clicking into the cell, hovering and clicking Sources
+        briefs: [research-brief-claude, research-brief-gemini, research-brief-openai]
+        url: https://support.google.com/docs/answer/15877199?hl=en
+
+  - layout: two_card
+    title: What a citation records
+    left:
+      head: Where it looked
+      body:
+        - The citation records which web pages Gemini used to write this value.
+        - Google attaches those pages to each filled cell, and we open them with one click.
+    right:
+      head: What the page says
+      body:
+        - Whether the page states this exact value is a separate question.
+        - Google's announcement promises a way to audit the data and never claims the cited pages are right.
+    takeaway: A citation tells us where Gemini looked, and reading the page tells us whether it is right.
+    narration: >
+      Behind every filled value sits a short chain of events, and the citation comes from one link in that chain.
+      We ask for a company's headquarters city. Gemini turns the request into a web search, Google Search returns a handful of pages,
+      and Gemini writes a short answer from what it read. Then the pages it used are attached to that one value.
+      Google hasn't published how Sheets makes that connection. In the tools Google offers developers for the same kind of search-backed answer,
+      the connection runs from a stretch of generated text to the pages used to write it.
+      So the link records that a page was used. It records nothing about whether the page states the value.
+      The writer of the EchoNerve newsletter put it in one line: a citation shows where the AI looked, and it doesn't show that the page says what we've been given.
+      Google's own announcement promises full visibility to audit and verify, and it stops there. It never claims the cited pages are right.
+      Gemini has answered the first question, where it looked, at no cost to us.
+      The second question, whether the page says this value, is still ours, and it decides whether a number is safe to put in front of a client.
+    sources:
+      - claim: A citation shows where the AI looked; it does not show that the page states the value (paraphrase of Saurabh Shukla, EchoNerve, "A source in a cell shows where the AI looked. It does not show that the page says what the cell says.")
+        briefs: [research-brief-claude, research-brief-gemini, research-brief-openai]
+        url: https://echonerve.substack.com/p/how-to-check-3000-ai-filled-spreadsheet
+        date: 2026-11-04
+      - claim: In Google's developer grounding, the link connects generated text to the pages used for it; documented for the developer tools, not for Sheets
+        briefs: [research-brief-claude, research-brief-gemini]
+        url: https://ai.google.dev/gemini-api/docs/generate-content/google-search
+      - claim: Google's post promises "full visibility to audit, verify, and cross-reference outputs" and does not claim the cited pages are right
+        briefs: [research-brief-claude, research-brief-gemini]
+        url: https://workspaceupdates.googleblog.com/2026/10/fill-with-gemini-now-provides-cell-level-citations-for-web-sources-and-supports-larger-requests.html
+        date: 2026-10-28
+        contradiction: Google's post frames citations as giving "greater trust and accuracy"; Shukla reads it narrowly, "Its post does not claim the cited pages are right."
+        side_taken: Shukla's narrow reading, since the post's wording promises visibility for auditing and contains no claim that cited pages are correct
+      - claim: The mechanism does not guarantee correctness
+        briefs: [research-brief-openai]
+
+  - layout: numbered_list
+    title: Three ways a cited cell is wrong
+    items:
+      - head: The page does not say it
+        body: Gemini misreads a table, takes a subsidiary's city, or cites a page that names the company without the figure.
+      - head: The page is out of date
+        body: An old directory still gives last year's headcount, and a filled value never refreshes on its own.
+      - head: Credible pages disagree
+        body: A filing counts full-time staff, a directory adds contractors, and Gemini cites one. Even Google's own pages disagree, at 350 or 3,000 cells per request.
+    note: "MONITOR: Google's help page caps a run at the first 350 selected cells; its announcement of 28 October 2026 says up to 3,000 cells per request."
+    narration: >
+      The chain behind a filled value has three places where it can go wrong, and each one leaves a perfectly normal citation behind.
+      The first is in the reading. Gemini finds the right company's page and misreads a dense table, or takes the city of a subsidiary,
+      or attaches a page that mentions the company and never states the figure at all. The citation is real and the page is real. The value just isn't on it.
+      Only opening the page catches that one.
+      The second is in time. Search can return an old directory, or a press release from before a round of layoffs, so the headcount Gemini writes was true once.
+      And once the value lands, it stays put. Google says a generated value goes in as an ordinary edit, and when the prompt is built by joining other cells,
+      Sheets won't even offer to refresh it. So a value that was right in October can be wrong by spring, still pointing at its page.
+      The third is disagreement. Two credible pages can measure different things, an annual filing counting full-time staff and a business directory counting headcount with contractors.
+      Gemini picks one and cites it, and nothing tells us a choice was made. Nobody has documented this one inside Sheets yet. It can still happen, and Google shows how easily:
+      its help page says a run fills the first three hundred and fifty selected cells, and its announcement says a request can cover three thousand.
+      For a pricing or supplier decision, all three failures cost us the same thing, a confident number we act on.
+    sources:
+      - claim: The model can misread a table, pull the wrong subsidiary's city, or attach a page that mentions the company without stating the figure
+        briefs: [research-brief-gemini, research-brief-claude, research-brief-openai]
+        url: https://cs.stanford.edu/~nfliu/papers/liu+zhang+liang.arxiv2023.pdf
+      - claim: Search can return an outdated directory or press release after headcount has changed (illustrative)
+        briefs: [research-brief-gemini, research-brief-openai]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+      - claim: A generated value is inserted as an edit; when a prompt joins cells, "you don't get a prompt to refresh the data"
+        briefs: [research-brief-claude, research-brief-gemini]
+        url: https://support.google.com/docs/answer/15877199?hl=en
+      - claim: Two credible pages measuring different scopes (full-time staff in a filing against headcount with contractors) can disagree, and Gemini may cite one
+        briefs: [research-brief-gemini, research-brief-openai]
+        contradiction: Claude finds this failure mode "plausible but has no evidence for Sheets"; OpenAI found no source naming it as a separate point.
+        side_taken: taught as a failure mode that can happen, with the narration stating plainly that no Sheets case has been documented
+      - claim: Google's help page caps a run at the first 350 selected cells; the 28 October 2026 announcement says up to 3,000 cells per request
+        briefs: [research-brief-claude, research-brief-gemini]
+        url: https://support.google.com/docs/answer/15877199?hl=en
+        date: 2026-10-28
+        contradiction: Help page "only the first 350 selected cells with AI functions will be generated"; Workspace post "up to 3,000 cells per request"
+        side_taken: both figures shown as an example of Google's own pages disagreeing; the caption carries both
+        monitor: true
+
+  - layout: stat_hero
+    title: How often a citation holds
+    number: 74.5%
+    caption: In a 2023 Stanford audit of four AI search engines, only 74.5% of citations supported the sentence they were attached to.
+    note: Measured in 2023 on other AI search products. No published figure exists yet for Gemini in Google Sheets.
+    narration: >
+      How often that first failure happens is something researchers at Stanford set out to measure.
+      In twenty twenty-three, Nelson Liu, Tianyi Zhang and Percy Liang took four commercial AI search engines, the kind that answer a question in a paragraph and attach links,
+      and had people check every citation against the page it pointed to.
+      Only seventy-four point five percent of the citations supported the sentence they were attached to.
+      And only fifty-one point five percent of the sentences were fully supported by their citations.
+      These were other products, measured three years before Gemini started citing pages in our spreadsheets, so the number doesn't carry over directly.
+      Nobody has measured this for Sheets yet. What it gives us is a sense of scale for planning.
+      If roughly one citation in four failed in products built for answering questions, we can't treat a cited value as right because its link opens.
+      A list of three thousand companies at anything like that rate would hold hundreds of values whose page says something else.
+    sources:
+      - claim: Liu, Zhang and Liang (Stanford, EMNLP Findings 2023) found only 74.5% of citations supported their associated sentence, across four generative search engines
+        briefs: [research-brief-claude, research-brief-gemini]
+        url: https://arxiv.org/abs/2304.09848
+        date: 2023-04-19
+      - claim: 51.5% of generated sentences were fully supported by citations
+        briefs: [research-brief-claude, research-brief-gemini]
+        url: https://arxiv.org/abs/2304.09848
+      - claim: No Sheets-specific citation accuracy rate has been published
+        briefs: [research-brief-claude, research-brief-gemini]
+
+  - layout: three_column
+    title: Why wrong cells look checked
+    columns:
+      - head: Rated most helpful
+        body: Stanford researchers found in 2023 that the answers people rated most useful carried more unsupported citations.
+      - head: Confident when wrong
+        body: The Tow Center at Columbia Journalism School found eight AI search tools more likely to answer wrongly than to admit a limit.
+      - head: No hedges
+        body: Ben Dixon, who writes the dixon.ai blog, tested five AI assistants and found zero hedges on any answer that failed.
+    takeaway: When a cell passes, we copy in the sentence from the page that states its value.
+    narration: >
+      There's a pattern across the studies of cited answers, and it runs against our instincts.
+      The same Stanford team found that the answers people rated most helpful tended to carry more unsupported citations,
+      so the useful-sounding answer was the one more likely to be wrong about its own links.
+      In twenty twenty-five, researchers at the Tow Center, part of Columbia Journalism School, tested eight AI search tools, Gemini among them,
+      and found them consistently more likely to give a wrong answer than to admit a limit. They called it unearned confidence.
+      And a writer who tested five AI assistants on the same factual questions checked every citation he could open and found zero hedges on any answer that failed.
+      So a wrong value in our sheet looks exactly like a right one. Same format, same tone, same link.
+      The citation is what makes a wrong value look checked, and nothing else about it looks any different.
+      That leaves one small habit. When a value passes, we paste the sentence from the page that states it right next to the value,
+      which is what that writer advises: require the exact page, then find the claim on it.
+      With thousands of values we can't do that for every one, which brings us to counting.
+    sources:
+      - claim: Liu et al. found citation precision inversely correlated with perceived utility; responses that seem more helpful often carry more unsupported statements or inaccurate citations
+        briefs: [research-brief-claude, research-brief-gemini]
+        url: https://arxiv.org/pdf/2304.09848v1
+        date: 2023-04-19
+      - claim: Tow Center (Jaźwińska and Chandrasekar, March 2025) found eight AI search engines "consistently more likely to provide an incorrect answer than to acknowledge limitations"; "unearned confidence"
+        briefs: [research-brief-gemini]
+        url: https://www.cjr.org/tow_center/we-compared-eight-ai-search-engines-theyre-all-bad-at-citing-news.php
+        date: 2025-03-06
+      - claim: Ben Dixon (dixon.ai) tested five assistants including the Gemini app; "Every non-passing source answer on the board, 0 hedges."
+        briefs: [research-brief-claude]
+        url: https://dixon.ai/posts/ai-cites-wrong-source/
+        date: 2026-10-22
+      - claim: Dixon's advice, "require the exact page, then find the claim on it"
+        briefs: [research-brief-claude]
+        url: https://dixon.ai/posts/ai-cites-wrong-source/
+      - claim: "Shukla: \"It looks checked. I think that look is the risk.\" (source of the slide title framing)"
+        briefs: [research-brief-claude]
+        url: https://echonerve.substack.com/p/how-to-check-3000-ai-filled-spreadsheet
+        date: 2026-11-04

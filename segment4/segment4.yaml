@@ -1,0 +1,191 @@
+module: Every Cell Gets a Receipt
+segment: 4
+title: How Much to Check
+description: Turns the sampling arithmetic into a four-step checking routine and a checking tier for each column by its use, then closes the module.
+voice_notes:
+  - Conversational pace, a host thinking aloud. Plain sentences, no rush.
+  - '"Gemini" is read "JEM-in-eye". "EchoNerve" is read "Echo Nerve". "UDomain" is read "You Domain".'
+  - '"29 of 30" is read "twenty-nine of thirty". Percentages are read in full, as "forty-five percent" and "ten percent".'
+hook_status: "partially supported: per-cell citations and origin-not-correctness in all three briefs; the 30 October date is unsupported (announced 28 October 2026, rollout from 20 October 2026)"
+value_status: "partially supported: the 41% figure is computed in all three briefs; the four-step routine is the module's own framework; the hands-on is unverified and is not referenced in this segment"
+slides:
+  - layout: cover
+    title: How Much to Check
+    subtitle: A colleague asks how sure we are of the filled column before it goes into a pricing decision.
+    narration: >
+      Half an hour of checking is easy to agree to in principle, and harder when someone is waiting on the answer.
+      Imagine a filled list of supplier figures, a few hundred values, each one carrying the pages behind it,
+      and a colleague who needs it for a pricing decision this afternoon. They ask one question. How sure are we?
+      Gemini can now fill a long list in a single request, and every value arrives looking equally finished.
+      If we treat a visible source as proof, unchecked numbers move straight into pricing, supplier and headcount decisions,
+      at the speed the tool was built for. So what routine do we follow before we vouch for a filled list,
+      and how much of it does each list deserve? A first look and a figure that sets a price
+      cost different amounts when they go wrong, and our checking has to tell them apart.
+    sources:
+      - claim: Treating a visible source as proof can push unverified numbers into pricing, supplier or headcount decisions
+        briefs: [research-brief-gemini]
+        url: https://workspaceupdates.googleblog.com/2026/10/fill-with-gemini-now-provides-cell-level-citations-for-web-sources-and-supports-larger-requests.html
+        date: 2026-11-25
+      - claim: Managers need a clear sampling rule and an audit note attached to every AI-filled deliverable
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-25
+
+  - layout: flow
+    title: A routine for one filled column
+    nodes: [Read the citation, Check a random sample, Cross-check a second source, Sign off with a note]
+    loop_back: true
+    footer: When a sample fails, that kind of row goes back for a check of every value.
+    note: No vendor names these four steps; they gather what careful practitioners already do.
+    narration: >
+      The routine we need can be built from the ways a single value goes wrong, one failure at a time.
+      A citation tells us where Gemini looked, and nothing about whether the page says what the value says.
+      So the opening step is to read the citation: open the page and find the sentence that states the value.
+      An independent tester who audits the citations of AI assistants puts the rule simply: require the exact page, then find the claim on it.
+      The next failure is scale. We can't read every page, and if we read only the first few names on a sorted list,
+      we read the best-documented companies, the ones least likely to be wrong.
+      So we check a sample picked at random. After that comes the page itself. One page can be out of date,
+      and two good pages can measure different things, full-time staff on one and headcount with contractors on the other.
+      So anything that matters gets a second source. And nobody downstream can see any of this checking,
+      so we sign off with a note that says what we did. When the sample turns up a failure, the routine loops back,
+      and that kind of value gets checked in full. No vendor publishes these four steps. They gather what careful
+      practitioners already do, treating each citation as a route to the evidence.
+    sources:
+      - claim: The four-step routine (read, sample, cross-check, sign off) is the module's own framework, not a named external standard
+        briefs: [research-brief-claude, research-brief-gemini, research-brief-openai]
+      - claim: Ben Dixon's advice to "require the exact page, then find the claim on it" (spoken by role, paraphrase of exact quote)
+        briefs: [research-brief-claude]
+        url: https://dixon.ai/posts/ai-cites-wrong-source/
+        date: 2026-11-25
+      - claim: Checking only the top rows is biased because larger firms are better documented
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-25
+      - claim: A source can be out of date, or two credible sources can measure different scopes (full-time staff against headcount with contractors)
+        briefs: [research-brief-gemini, research-brief-openai]
+        contradiction: "Claude: 'This failure mode is plausible but has no evidence for Sheets'; OpenAI: 'We did not find a source stating out of date or disagree as separate points.'"
+        side_taken: taught as a failure mode in plain terms with an illustrative example, as the reconciliation directs; no Sheets case is claimed
+      - claim: Gary Stanton (AIAdoptionTrends) on using cell citations as a route to the evidence, then checking each decision-changing fact (paraphrase; spoken by role)
+        briefs: [research-brief-openai]
+      - claim: Jose S.'s routine of opening each sampled cell's Sources and recording pass or fail, with a sign-off note
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-25
+
+  - layout: stat_hero
+    title: One list, thirty random checks
+    number: 29 of 30
+    caption: A list of 200 supplier headquarters passed 29 of 30 random checks, and every row sourced from a business directory was then checked one by one.
+    note: Jose S., who writes the Analytics Made Simple tutorials, published this worked example in November 2026.
+    narration: >
+      That routine has been run end to end, in public, by a tutorial writer who teaches spreadsheet analysis.
+      He had Gemini fill the headquarters city for a list of two hundred suppliers, then froze the answers as plain values
+      so they could not shift while he worked. He put a random number beside every supplier, fixed those numbers, and sorted by them,
+      so the thirty he checked were a fair draw. For each one he opened the cited page and looked for the city,
+      in under a minute apiece, so the whole check cost less than half an hour. Twenty-nine matched their pages. One did not. The note he wrote is one sentence long:
+      thirty random rows checked against sources, twenty-nine matched, directory-sourced rows checked individually.
+      That last clause is the loop at work. The note named the kind of page to distrust, the business directory,
+      and every supplier that leaned on one got a check of its own. One miss in thirty, spread across two hundred suppliers,
+      would leave several more wrong cities among the values nobody opened, and that follow-up is what goes looking for them.
+    sources:
+      - claim: Jose S. (Analytics Made Simple) filled a 200-supplier headquarters list, froze it as values, drew 30 random rows with a random-number column, and 29 matched
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-10
+      - claim: Audit note "30 random rows checked against sources, 29 matched; directory-sourced rows checked individually" (exact)
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-10
+      - claim: Checking one cited cell takes under a minute
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-10
+      - claim: Several more wrong values in the unchecked rows if the one-in-thirty miss rate held (derived from 1/30 of 200)
+        briefs: [research-brief-gemini]
+
+  - layout: table
+    title: How much each column needs
+    columns: [How the column is used, What we check, What we can then say]
+    rows:
+      - [A first look, Five cells picked at random, The prompt and format are working]
+      - [A list the team uses, Thirty cells picked at random, The error rate is likely under 10%]
+      - [A figure for a decision, "Every source, or a smaller sheet", Each value was found on its page]
+      - [A figure we must defend, A formula; Gemini only adds labels, Each number has a formula trail]
+    takeaway: For the columns that matter most, we check every cell or Gemini does not fill them.
+    note: The two highest-stakes tiers follow Saurabh Shukla, who writes the EchoNerve newsletter, and the UD Technology Team at UDomain.
+    narration: >
+      With that routine in hand, the remaining decision is how much of it each list deserves, and the answer rises with
+      what the list will be used for. The lightest use is a first look, where we only want to know whether the prompt works.
+      Five random cells catch a broken prompt or a messy format before we spend our monthly usage allowance on it.
+      That is all five can do, since five clean cells still allow an error rate up to forty-five percent.
+      The next use is a list the team works from. A wrong value there wastes effort,
+      so we want a ceiling on errors, and thirty clean random cells bring it under ten percent for about half an hour.
+      Then comes a figure that changes a decision, a price or a choice of supplier. A sample describes the list as a whole,
+      while a decision rests on one value, so a single wrong figure is a wrong decision.
+      The writer of the EchoNerve newsletter puts the rule plainly. Open every source, and if that is too many cells,
+      the sheet is too big for that use. Beyond that is a figure we must defend to an auditor or a board,
+      and the UD Technology Team at a company called UDomain draws the line there. A generated number has no formula trail,
+      so we keep the formula and let Gemini only label around it. For the lists that matter most,
+      the right amount of checking is every value, or Gemini does not fill them at all.
+    sources:
+      - claim: Five cells serve as a prompt smoke test before spending usage quotas
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-25
+      - claim: Five clean random cells still allow an error rate up to 45% (95% upper bound)
+        briefs: [research-brief-claude, research-brief-gemini]
+      - claim: Thirty clean random cells bring the error ceiling under 10%, about 20 to 30 minutes of work
+        briefs: [research-brief-claude, research-brief-gemini]
+        url: https://echonerve.substack.com/p/how-to-check-3000-ai-filled-spreadsheet
+        date: 2026-11-04
+      - claim: Saurabh Shukla (EchoNerve) on decision cells, "open every source. If that is too many cells, the sheet is too big for that use." (exact; spoken by role)
+        briefs: [research-brief-claude]
+        url: https://echonerve.substack.com/p/how-to-check-3000-ai-filled-spreadsheet
+        date: 2026-11-04
+      - claim: UD Technology Team (UDomain), "Do not use it for figures you must defend. A generated number has no formula trail." and "use Gemini only to draft or label around them" (paraphrase in narration)
+        briefs: [research-brief-gemini]
+        url: https://www.ud.hk/resources/ai/2026-07-10-fill-with-gemini-sheets
+        date: 2026-07-10
+
+  - layout: bullets
+    title: What we can now do
+    bullets:
+      - An engineer can read five clean cells as an error ceiling of 45% and size a sample to the error rate a column can afford.
+      - A manager can set a checking tier for each AI-filled column by how it will be used, and ask for the audit note that goes with it.
+      - An early-career learner can check a cited cell by finding the sentence on the page that states the value, and pick cells at random.
+    narration: >
+      Everything we've worked through fits into a single sentence, and it's worth saying once.
+      A citation tells us where Gemini looked, and how much of a list we check is set by what the list will be used for
+      and by the arithmetic of a random sample. What that means depends on where we sit.
+      An engineer can now read five clean cells as an error ceiling of forty-five percent,
+      and size a sample to the error rate a list can afford. A manager can set a checking tier for each list Gemini fills,
+      by how it will be used, and ask for the audit note that goes with it, so trust becomes a sentence someone can question.
+      And someone early in their career can check a cited value by finding the sentence on the page that states it,
+      and can pick the values to check at random, away from the famous names.
+      All of it takes a random number beside each value and the patience to open thirty pages.
+    sources:
+      - claim: Five clean random cells leave an error ceiling of 45%; thirty clean cells bring it under 10%
+        briefs: [research-brief-claude, research-brief-gemini]
+      - claim: Checking tiers set by how a column is used, with an audit note
+        briefs: [research-brief-claude, research-brief-gemini]
+      - claim: Random selection with a random-number column; checking top rows is biased
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-25
+
+  - layout: landing
+    title: One thing to keep
+    text: "When we hand over a filled column, one line goes with it: how many cells we checked at random, how many matched, and what we did about the rest."
+    narration: >
+      The habit that carries all of this is a small one. We date each filled value, so the next reader knows how old it is.
+      And when we hand over a filled column, one line goes with it: how many cells we checked at random, how many matched,
+      and what we did about the rest.
+    sources:
+      - claim: Record the exact audit summary (rows checked, matches found, failure pattern) alongside the deliverable
+        briefs: [research-brief-gemini]
+        url: https://analyticsmadesimple.com/tutorials/fill-with-gemini-google-sheets-check-sources/
+        date: 2026-11-25
+      - claim: Justin McKelvey's advice to add a "last generated" date column so stale answers are easy to spot
+        briefs: [research-brief-claude]
+        url: https://justinmckelvey.com/blog/gemini-in-google-sheets
+        date: 2026-11-07
