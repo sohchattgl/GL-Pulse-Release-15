@@ -42,13 +42,13 @@ G14: =XLOOKUP(B14,$A$2:$A$5,$C$2:$C$5)
 ## Prompt 1: the currency fill
 
 ::: prompt Prompt 1 (from prompts/Case2_Prompts.md): the currency fill
-For the country named in column A of this row, give the three-letter code of the currency that is legal tender there today (for example EUR or JPY). Return the code only, with no other words.
+D2: =GEMINI("For the country named in this row, give the three-letter code of the currency that is legal tender there today (for example EUR or JPY). Return the code only, with no other words.", A2)
 :::
 
 ## Prompt 2: the tax rate fill
 
 ::: prompt Prompt 2 (from prompts/Case2_Prompts.md): the tax rate fill
-For the country named in column A of this row, give the standard VAT or GST rate in force today, as a number with no % sign (for example 19 or 25.5). Return the number only, with no other words.
+E2: =GEMINI("For the country named in this row, give the standard VAT or GST rate in force today, as a number with no % sign (for example 19 or 25.5). Return the number only, with no other words.", A2)
 :::
 
 ## Config 4: the random draw on the Countries tab

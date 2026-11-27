@@ -46,6 +46,17 @@ Defect note. The forty suppliers are real public companies, an exception to the 
 
 Defect note. All sixty standard rates were checked against PwC Worldwide Tax Summaries on 26 November 2026, and the table is dated inside the case (in force 1 November 2026); a rate change before recording means editing the build script. "Gemini only labels around it" became renamed headers and the lookup column, with no second fill, to stay within twelve minutes.
 
+## Amended on 27 November 2026: the GEMINI function
+
+A live run of Case study 1 on Google Sheets on the web found that Fill on this account inserts a default AI formula with no prompt box. At the user's direction both cases now type their prompts as `=GEMINI(prompt, cells)` and paste the formula down the column. Things the run showed, now written into the steps:
+
+- Sorting the sheet runs every GEMINI or AI formula again, so Case study 1 checks the values after the sort. Case study 2 never sorts the Countries tab.
+- The bar under a filled cell holds Refresh and fill beside the Sources link icon. Clicking Refresh and fill replaces the value, so each Sources step says to leave it alone.
+- A cell can come back with no Sources, and that cell fails.
+- The MISUMI Europa key page was read again and still names the European headquarters at Franklinstraße 61-63, Frankfurt am Main.
+
+From the partial run, before the steps were rewritten: both planted suppliers landed in the random ten, and both matched the key. Panduit (row 3 after the sort) came back with no Sources. HARTING (row 4) passed on harting.com/en-NO, "Our headquarters is located in Espelkamp". These are not the recording; the bracketed lines are still written from the real take.
+
 ## Across the pair
 
 - Jobs, shapes and functions differ: a supplier list for freight regions (demo, operations) and a country pricing sheet (build, finance).

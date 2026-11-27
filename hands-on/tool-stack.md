@@ -10,6 +10,7 @@ The models, products, techniques or risks this release is about, and the alterna
 |---|---|---|
 | Fill with Gemini | The Sheets entry point that fills selected empty cells with the AI function and, since October 2026, attaches the web pages it used to each cell | slide 1.3 |
 | AI function | The formula Fill with Gemini writes into each cell, grounded in Google Search for factual questions; it can be typed by hand | slide 1.2 |
+| GEMINI function | =GEMINI(prompt, cells), typed into a cell and copied down a column; it returns a value from the prompt and the cells given and attaches the web pages it used | slide 1.2 (the typed-formula route), adopted on 27 November 2026 |
 
 The video names no competing product on a slide. Clay appears only in a contradiction note on 1.1 and is not a route here.
 
@@ -21,6 +22,7 @@ Kind: `vendor-ui`, `no-code`, `hosted-demo`, `local` or `comparison`. Access: `o
 |---|---|---|---|---|---|---|---|---|---|
 | Google Sheets on the web, Fill with Gemini | Fill with Gemini, AI function | Signed-in Google account with Gemini in Sheets enabled | vendor-ui | open | An eligible plan: Workspace Business Standard or Plus, Enterprise Standard or Plus, Google AI Pro or Ultra, Google AI Pro for Education, or the AI Expanded Access add-on. Google AI Pro is listed at $19.99 a month; Workspace offers a 14-day trial, and which trial tier includes Gemini in Sheets is not settled by the pricing page | fill, prompt, sources view, open page, random draw, freeze values, sort, filter, formula, note, new tab | The filled value in each cell, and the pages behind it when the cell is clicked, hovered and Sources is opened | https://workspaceupdates.googleblog.com/2026/10/fill-with-gemini-now-provides-cell-level-citations-for-web-sources-and-supports-larger-requests.html | 26 November 2026 |
 | Google Sheets on the web, AI function typed in a cell | AI function, Fill with Gemini | The same account; the formula typed into a cell and filled down by hand | vendor-ui | open | The same eligible plan | prompt, fill, sources view, open page, random draw, freeze values, sort, filter, formula, note, new tab | The same value and Sources view; the prompt is visible in the formula bar | https://support.google.com/docs/answer/15877199?hl=en | 26 November 2026 |
+| Google Sheets on the web, GEMINI function | GEMINI function | The same account; =GEMINI(prompt, cells) typed into the first cell and pasted down the column | vendor-ui | open | The same eligible plan | prompt, fill, sources view, open page, random draw, freeze values, sort, filter, formula, note, new tab | The value in each cell; under a clicked, hovered cell a bar with Refresh and fill and a link icon with the page count, which opens the list of pages | https://support.google.com/docs/answer/15877199?hl=en | 27 November 2026, run on screen |
 | Google AI Studio with Grounding with Google Search | Gemini models grounded in Google Search, outside Sheets | Google account, AI Studio playground | comparison | open | A free Google account; grounding is free to test in AI Studio per Google's October 2024 post (not re-verified) | playground run, grounded answer, sources list | Answer text with the search queries and source links listed beside it | https://ai.google.dev/gemini-api/docs/generate-content/google-search | 26 November 2026 |
 | Google Search in a browser | Nothing of the subject; the manual lookup the fill replaces | Any browser | comparison | open | No account | web search, open page, copy, paste | Search results and the pages themselves | https://www.google.com | 26 November 2026 |
 
@@ -36,3 +38,5 @@ Kind: `vendor-ui`, `no-code`, `hosted-demo`, `local` or `comparison`. Access: `o
 ## Confirmed
 
 Confirmed at gate 0 on 26 November 2026: Google Sheets on the web, Fill with Gemini.
+
+Changed on 27 November 2026 at the user's direction: Google Sheets on the web, GEMINI function. In the live run that day, Fill on this account inserted a default AI formula with no prompt box, so both cases type the prompt as a GEMINI formula. The run also showed that sorting the sheet runs every GEMINI or AI formula again, that Refresh and fill sits beside the Sources link icon and replaces the value when clicked, and that a cell can come back with no Sources.

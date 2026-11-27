@@ -6,15 +6,15 @@ Execution Guide | operations, finance
 
 One person records each case study Part by Part in Supademo or a screen recorder, step by step, and an AI voice reads each Part's voiceover over the capture. Before recording, work through each case's "Before recording" steps: build the source material, read every file, and write down the audit facts.
 
-Case study 1, The Supplier List With a Note Attached, puts Fill with Gemini to work on a supplier list an operations analyst needs grouped into freight regions: a demo that fills the list, checks a random ten cells against their sources, and ends on the note that travels with the sheet. It draws on segments 1, 2, 3 and 4. Case study 2, A Checking Tab for Every Filled Column, puts Fill with Gemini to work on a sixty-country pricing sheet: a build that turns the video's checking tiers and sample arithmetic into one reusable tab, then runs it on a currency column and a tax rate column. It draws on segments 1, 3 and 4.
+Case study 1, The Supplier List With a Note Attached, puts the GEMINI function in Google Sheets to work on a supplier list an operations analyst needs grouped into freight regions: a demo that fills the list, checks a random ten cells against their sources, and ends on the note that travels with the sheet. It draws on segments 1, 2, 3 and 4. Case study 2, A Checking Tab for Every Filled Column, puts the same function to work on a sixty-country pricing sheet: a build that turns the video's checking tiers and sample arithmetic into one reusable tab, then runs it on a currency column and a tax rate column. It draws on segments 1, 3 and 4.
 
 The subject runs live on its surface. The inputs are files we built, and every fact in an output has to come from one of them or from a page Gemini cited on camera. The audit facts are chosen before anything runs. The voiceover describes what this run did, in the past tense, and makes no forecast about other runs.
 
-Last checked against the live surface: Google Sheets on the web, Fill with Gemini, 26 November 2026.
+Last checked against the live surface: Google Sheets on the web, the GEMINI function, 27 November 2026, with Case study 1's Part 1 and the draw in Part 2 run on screen.
 
 ## What you need
 
-- Google Sheets on the web, Fill with Gemini, which runs Fill with Gemini: open on 26 November 2026 to accounts with Gemini in Sheets enabled on an eligible plan (Workspace Business Standard or Plus, Enterprise Standard or Plus, Google AI Pro or Ultra, Google AI Pro for Education, or the AI Expanded Access add-on; Google AI Pro is listed at $19.99 a month). It runs in Sheets on the web only. No fallback surface was confirmed; if the surface is unavailable on the day, the recording waits.
+- Google Sheets on the web, with the GEMINI function: open on 27 November 2026 to accounts with Gemini in Sheets enabled on an eligible plan (Workspace Business Standard or Plus, Enterprise Standard or Plus, Google AI Pro or Ultra, Google AI Pro for Education, or the AI Expanded Access add-on; Google AI Pro is listed at $19.99 a month). It runs in Sheets on the web only. No fallback surface was confirmed; if the surface is unavailable on the day, the recording waits.
 - A screen recorder or Supademo, capturing a browser window at 1920 by 1080. Keep out of frame: the account's email address and avatar, other browser tabs and bookmarks, any notification, and any sheet that is not the case's own.
 - Excel and Word, or any reader that opens `.xlsx` and `.docx` files, to read the source material before recording.
 - Python with python-docx and openpyxl, to build the source material once.
@@ -28,8 +28,8 @@ Last checked against the live surface: Google Sheets on the web, Fill with Gemin
 
 | Term | Meaning |
 |---|---|
-| Fill with Gemini | The Google Sheets feature that fills selected empty cells with values Gemini writes, using the pages Google Search finds. |
-| Sources | The pages Gemini used for one filled cell, opened from that cell. They show where Gemini looked; reading the page shows whether it states the value. |
+| GEMINI formula | =GEMINI(prompt, cells): the Google Sheets function that writes a value from a prompt and the cells it is given, using the pages Google Search finds. Copied down a column, it fills every row. Sorting the sheet runs every GEMINI formula again. |
+| Sources | The pages Gemini used for one filled cell, opened from the link icon with the page count under that cell. They show where Gemini looked; reading the page shows whether it states the value. The button beside it, Refresh and fill, runs the formula again and replaces the value. |
 | Random draw | A random number beside every row, frozen so it stops changing, then sorted, so the rows we check are a fair sample of the whole list. |
 | Pass or fail | The result of checking one cell: it passes when the cited page states the value in the cell, and fails otherwise. |
 | Ceiling | The highest error rate a clean sample still allows: about 45% after five clean cells, about 26% after ten, under 10% after thirty. |
@@ -40,9 +40,9 @@ Last checked against the live surface: Google Sheets on the web, Fill with Gemin
 
 We are the operations analyst at Larkfield Components, a parts distributor. Next quarter's freight contracts are being set, and the logistics lead has to put each of our forty suppliers into a shipping region before deciding which regional carrier contract to renew. Purchasing's supplier master holds the legal name, the website and the buyer for each supplier, and leaves the headquarters column empty. A supplier placed in the wrong region lands on the wrong carrier's contract for a whole quarter.
 
-Fill with Gemini fills the headquarters city and country for all forty rows from one prompt, and attaches to each cell the pages it used. We then run the checking routine from the video once, by hand, on this one list: read the pages behind a random ten cells, copy in the sentence that states each city, check two suppliers against what our purchasing team holds on file, cross-check anything that failed, and write the one-line note that travels with the sheet.
+The GEMINI function in Google Sheets fills the headquarters city and country for all forty rows from one formula copied down the column, and attaches to each cell the pages it used. We then run the checking routine from the video once, by hand, on this one list: read the pages behind a random ten cells, copy in the sentence that states each city, check two suppliers against what our purchasing team holds on file, cross-check anything that failed, and write the one-line note that travels with the sheet.
 
-Part 1 fills the headquarters column for forty suppliers from one prompt. Part 2 draws ten rows at random, opens each cell's Sources and logs pass or fail with the sentence that decided it. Part 3 audits two suppliers against the team's key, cross-checks any failure and writes the note for the logistics lead.
+Part 1 fills the headquarters column for forty suppliers from one formula. Part 2 draws ten rows at random, opens each cell's Sources and logs pass or fail with the sentence that decided it. Part 3 audits two suppliers against the team's key, cross-checks any failure and writes the note for the logistics lead.
 
 The finished walkthrough runs about 11 minutes. It draws on segment 1 of the video, "A Source in Every Cell", segment 2, "Where Gemini Looked", segment 3, "Five Clean Cells", and segment 4, "How Much to Check".
 
@@ -51,7 +51,8 @@ The finished walkthrough runs about 11 minutes. It draws on segment 1 of the vid
 | Term | Meaning |
 |---|---|
 | Supplier master | Purchasing's list of the suppliers we buy from: account code, legal name, website, buyer and notes. Ours holds forty suppliers on rows 3 to 42 of the Suppliers tab. |
-| Legal name | The registered name on the supplier's invoices, in column B. It is one of the two things the prompt points Gemini at. |
+| Legal name | The registered name on the supplier's invoices, in column B. It is one of the two cells the formula points Gemini at. |
+| GEMINI formula | =GEMINI(prompt, cells): Gemini in Sheets answers the prompt for the cells given and attaches the pages it used. Sheets runs every GEMINI formula again when the sheet is sorted, and runs one again when Refresh and fill is clicked under it. |
 | Entity we buy from | Column D: whether we buy from the supplier's group or from a local company that belongs to it. Four rows buy from a local company. |
 | Freight region | The group of countries one carrier contract covers. The logistics lead assigns each supplier to one from its headquarters country. |
 | Evidence sentence | The sentence copied from a cited page that names the headquarters, pasted into column K beside the cell it supports. |
@@ -96,9 +97,9 @@ The logistics lead receives the filled supplier master with the audit note in ce
     | Ten clean rows still allow an error rate of up to about 26% | `02_Supplier_Key.xlsx`, How we check tab, row 5 |
 
 7. Re-check the key on the day. The key was checked against both pages on 26 November 2026. Open each URL in column E of the Key tab and confirm the page still names the headquarters in column D. If a page has moved or names another city, change the `KEY` entry in `build_materials.py`, build again, and update the audit facts before recording.
-8. Upload `01_Supplier_List.xlsx` to Google Drive and open it with Google Sheets [confirm label]. Check that rows 1 and 2 stay in place when you scroll; if they do not, use View, Freeze, 2 rows [confirm label].
-9. Confirm the surface: Google Sheets on the web, signed in to an account on an eligible plan with Gemini in Sheets turned on. Select two empty cells in column H and confirm the prompt menu with Fill appears, then press Escape. No fallback surface was confirmed at gate 0, so if Fill with Gemini is missing on the day, the recording waits. Forty cells sit well under the 350 cells Google's help page gives for one run.
-10. Check every label the steps quote against the screen: Fill and Sources appear in Google's own pages; the prompt box, Paste special, Values only, Sort sheet, Freeze and the upload labels are marked `[confirm label]` until you see them.
+8. Upload `01_Supplier_List.xlsx` to Google Drive and open it with Google Sheets [confirm label]. Check that rows 1 and 2 stay in place when you scroll; if they do not, use View, Freeze, 2 rows.
+9. Confirm the surface: Google Sheets on the web, GEMINI function, signed in to an account on an eligible plan with Gemini in Sheets turned on. In an empty cell to the right of the table, type =GEMINI("Say hello") and press Enter. When it returns a value, delete it. If it shows #NAME?, the account lacks the function and the recording waits; no fallback surface was confirmed at gate 0.
+10. Check every label the steps quote against the screen. Refresh and fill, the link icon with a page count, Sort sheet A to Z and View, Freeze, 2 rows were seen on screen on 27 November 2026; the upload labels are marked `[confirm label]` until you see them.
 11. Keep out of frame the account's email address and avatar, other tabs and any notification. Between takes of Part 1, upload a fresh copy of `01_Supplier_List.xlsx`; Parts 2 and 3 run on the same sheet without a reset.
 
 ### Planted, for the person recording only
@@ -112,37 +113,37 @@ The logistics lead receives the filled supplier master with the audit note in ce
 
 ### Part 1: Fill headquarters city and country for forty suppliers from one prompt
 
-This Part runs the fill. It comes first because every later check reads what this fill returns. The prompt points Gemini at the legal name and the website in each row, because the function reads only the prompt and the row it is pointed at.
+This Part runs the fill. It comes first because every later check reads what this fill returns. The formula hands Gemini the legal name and the website in each row, because the function reads only the prompt and the cells it is given.
 
 1. Show the Suppliers tab of the uploaded list, scrolled to the top so the title, the headings and the first rows are in frame.
-2. Click H3 and drag down to H42 to select the forty empty cells under HQ city, country.
-3. In the prompt menu Fill with Gemini opens beside the selection, click the box for your own prompt [confirm label] and paste Prompt 1.
+2. Click H3, the first empty cell under HQ city, country, paste Prompt 1, our prompt inside the GEMINI function, and press Enter. Wait until H3 shows a city and a country.
 
 ::: prompt Prompt 1 (from prompts/Case1_Prompts.md): the headquarters fill
-For the company in this row, give the city and country of its headquarters. Use the legal name in column B and the website in column C to identify the company, and answer for the company that runs that website. Write the answer as City, Country, with nothing else in the cell.
+H3: =GEMINI("For the company in this row, give the city and country of its headquarters. Use the legal name in column B and the website in column C to identify the company, and answer for the company that runs that website. Write the answer as City, Country, with nothing else in the cell.", B3:C3)
 :::
 
-4. Click Fill and wait until all forty cells hold a value, then capture. The wait is cut in the edit.
+3. Click H3 and press Ctrl+C. Click the Name box above column A, type H4:H42, press Enter, and press Ctrl+V, so the formula fills the other thirty-nine cells.
+4. Wait until no cell in column H shows Generating…, then capture. The wait is cut in the edit.
 5. Check that H3 to H42 each hold a value written as a city and a country, with no cell blank and none showing an error.
-6. Click H3 and read the formula bar. If it shows an AI formula, check that its range covers B3 and C3; if it shows only the value, note that and move on.
+6. Click H3 and read the formula bar: the GEMINI formula, with the range B3:C3 covering the legal name and the website.
 
 #### If it does something else
 
-If no prompt menu appears, the account lacks Fill with Gemini and the recording waits. If the fill stops short of row 42, select the cells still empty, run Prompt 1 on them and keep the capture. If cells show errors, upload a fresh copy and take the Part again.
+If the formula shows #NAME?, the account lacks the GEMINI function and the recording waits. If a cell stays on Generating… for more than two minutes, click it, hover over it and click Refresh and fill, and keep the capture. If cells show errors, upload a fresh copy and take the Part again.
 
 #### Voiceover for Part 1
 
 - V1 (step 1, experience): We're the operations analyst at Larkfield Components, a parts distributor, and our logistics lead needs forty suppliers grouped into shipping regions before next quarter's freight contracts are set. The grouping rests on one fact per supplier, where its headquarters is.
 - V2 (step 1, experience): A supplier in the wrong region goes on the wrong carrier's contract for three months. So before we hand this list over, we need to know how much of it we can actually vouch for.
-- V3 (step 2, setup): Select the forty empty cells under HQ city, country. Forty is a size one person can fill and check before lunch.
-- V4 (step 3, setup): Paste the prompt into the box beside the selection. It names the legal name and the website, because Gemini reads only the prompt and the row it is pointed at, and the website is what tells two firms with similar names apart.
-- V5 (step 4, setup): Click Fill. What follows is one run of Fill with Gemini in Google Sheets on the web, recorded on [after the run: the recording date].
+- V3 (step 2, setup): The first empty cell under HQ city, country gets one GEMINI formula. Forty rows is a size one person can fill and check before lunch.
+- V4 (step 2, setup): The formula hands Gemini the legal name and the website, because Gemini reads only the prompt and the cells it is given, and the website is what tells two firms with similar names apart.
+- V5 (step 3, setup): We copy the formula down the column. What follows is one run of the GEMINI function in Google Sheets on the web, recorded on [after the run: the recording date].
 - V6 (step 5, mechanism): Forty values came back, each a city and a country, and every one of them looks equally finished. [after the run: how long the fill took, and whether any cell came back blank.]
-- V7 (step 6, mechanism): The formula bar shows what Gemini was given for this row. [after the run: whether the range covered the legal name and the website, as the formula bar shows it.]
+- V7 (step 6, mechanism): The formula bar shows what Gemini was given for this row: our prompt, and the legal name and website in B3 and C3.
 
 ### Part 2: Draw ten rows at random and check each cell's sources
 
-This Part picks ten rows by a frozen random number and checks each one against the pages Gemini cited. It comes before the audit because the note's first two numbers are counted from this log. The top of the list holds the best-known names, so the draw ignores the order the list arrived in.
+This Part picks ten rows by a frozen random number and checks each one against the pages Gemini cited. It comes before the audit because the note's first two numbers are counted from this log. The top of the list holds the best-known names, so the draw ignores the order the list arrived in. Sorting makes Sheets run every GEMINI formula again, so the values we check are the ones the cells hold after the sort.
 
 1. Click I2 and type the four headings below, one per cell from I2 to L2.
 
@@ -153,36 +154,37 @@ K2: Evidence sentence
 L2: Second source
 :::
 
-2. Click I3, type the formula below, press Enter, and double-click the small square at the cell's lower right corner so the formula fills down to I42.
+2. Click I3, type the formula below and press Enter. Copy I3 and paste it into I4:I42 the way Part 1 copied H3.
 
 ::: config Config 2 (from prompts/Case1_Prompts.md): the random number
 I3: =RAND()
 :::
 
-3. Select I3 to I42, copy, and paste back with Edit, Paste special, Values only [confirm label], so the numbers stop changing.
-4. Click any cell in column I and choose Data, Sort sheet, Sort sheet by column I (A to Z) [confirm label].
-5. Check that rows 1 and 2 stayed at the top, that I3 shows a plain number in the formula bar, and that each row still has its legal name, website and filled value side by side. Rows 3 to 12 are the draw.
-6. Click into H3, hover over the value and click Sources to see the pages Fill with Gemini used. Capture the list.
-7. Open the pages in the list in order until one names the headquarters, and copy the sentence that names it.
-8. Paste the sentence into K3 and type Pass in J3 when it names the city in H3 and the country matches. When no listed page names that city as the headquarters, type Fail in J3 and type into K3 what the page says instead.
-9. Repeat steps 6 to 8 for rows 4 to 12. Capture rows 3, 4 and 12 in full; the edit cuts the other seven to a time-lapse.
-10. Check that J3 to J12 each hold Pass or Fail and that K3 to K12 each hold a sentence.
+3. Select I3 to I42, press Ctrl+C, then press Ctrl+Shift+V to paste the numbers back as values only, so they stop changing.
+4. Right-click the letter I at the top of column I and choose Sort sheet A to Z.
+5. Wait until no cell in column H shows Generating…, then capture column H. The sort ran the GEMINI function again in every cell, and these are the values we check.
+6. Check that rows 1 and 2 stayed at the top, that I3 shows a plain number in the formula bar, and that each row still has its legal name, website and filled value side by side. Rows 3 to 12 are the draw.
+7. Click H3 and hover over the value. In the bar that opens under the cell, click the link icon with the page count, and leave Refresh and fill alone, because it runs the formula again and replaces the value. Capture the list of pages. If the bar shows no link icon, the cell has no Sources: type Fail in J3 and "No source" in K3, and go to the next row.
+8. Open the pages in the list in order until one names the headquarters, and copy the sentence that names it.
+9. Paste the sentence into K3 and type Pass in J3 when it names the city in H3 and the country matches. When no listed page names that city as the headquarters, type Fail in J3 and type into K3 what the page says instead.
+10. Repeat steps 7 to 9 for rows 4 to 12. Capture rows 3, 4 and 12 in full; the edit cuts the other seven to a time-lapse.
+11. Check that J3 to J12 each hold Pass or Fail and that K3 to K12 each hold a sentence or "No source".
 
 #### If it does something else
 
-If the Sources label is missing after the sort, press Ctrl+Z to undo it, confirm the label is back, and check the ten rows with the smallest numbers in column I instead; keep the capture. If a cited page will not open, log Fail with the reason.
+If Refresh and fill gets clicked by mistake, the cell's value and its Sources are replaced: check the new value, say so in column L, and keep the capture. If a cited page will not open, log Fail with the reason.
 
 #### Voiceover for Part 2
 
 - V8 (step 2, mechanism): Now we choose which cells to open. The first rows on this list are the names everyone knows, with current websites and plenty of coverage, so every row gets a random number and the same chance of being opened.
 - V9 (step 3, mechanism): Paste the numbers back as values. A random number changes with every edit, and freezing it keeps the draw from reshuffling while we work.
-- V10 (step 4, mechanism): The sort puts ten rows at the top that nobody picked. [after the run: which suppliers landed on rows 3 to 12, and how many of them came from the bottom half of the original list.]
-- V11 (step 6, mechanism): Every check starts in the cell. We click in, hover, open Sources, and the pages Gemini used are listed under the value. [after the run: how many pages the first cell listed.]
-- V12 (step 7, mechanism): Those pages show where Gemini looked. The cell passes only when we find a sentence on one of them that names this city as the headquarters.
-- V13 (step 8, mechanism): The sentence goes into the column beside the value, so the logistics lead sees the evidence without opening anything. [after the run: the first row's result, and the sentence we copied.]
-- V14 (step 9, mechanism): The second row runs the same way, Sources, page, sentence. [after the run: the supplier, what its page said, and whether it passed.]
-- V15 (step 9, mechanism): The other seven rows run the same three moves. [after the run: any row whose page named the company without naming its city, and what we logged for it.]
-- V16 (step 10, mechanism): Ten rows, ten results, each with the sentence that decided it. [after the run: how many of the ten passed.]
+- V10 (step 5, mechanism): The sort puts ten rows at the top that nobody picked, and it ran every formula again. [after the run: the ten suppliers on rows 3 to 12, and how many came from the list's bottom half.]
+- V11 (step 7, mechanism): Every check starts in the cell. We click in, hover, click the link icon with the page count, and the pages Gemini used are listed under the value. [after the run: how many pages the first cell listed, or that it listed none.]
+- V12 (step 8, mechanism): Those pages show where Gemini looked. The cell passes only when we find a sentence on one of them that names this city as the headquarters, and a cell with no pages behind it fails.
+- V13 (step 9, mechanism): The sentence goes into the column beside the value, so the logistics lead sees the evidence without opening anything. [after the run: the first row's result, and the sentence we copied.]
+- V14 (step 10, mechanism): The second row runs the same way, Sources, page, sentence. [after the run: the supplier, what its page said, and whether it passed.]
+- V15 (step 10, mechanism): The other seven rows run the same three moves. [after the run: any row whose page named the company without naming its city, and what we logged for it.]
+- V16 (step 11, mechanism): Ten rows, ten results, each with the sentence that decided it. [after the run: how many of the ten passed.]
 
 ### Part 3: Audit two suppliers against the team's key, cross-check failures and write the note
 
@@ -190,7 +192,7 @@ This Part checks the two suppliers our purchasing team holds on file, whether or
 
 1. Open `02_Supplier_Key.xlsx` in Excel beside the browser, on the Key tab.
 2. In the sheet, press Ctrl+F, find MISUMI Europa GmbH, and check its value in column H against Frankfurt am Main, Germany in the key, letter by letter.
-3. Click into its value, hover, click Sources, and read whose page Fill with Gemini cited: the European company's, the parent group's, or another firm's.
+3. Click into its value, hover, click the link icon with the page count, and read whose page Gemini cited: the European company's, the parent group's, or another firm's.
 4. Type into its column L "Key:" followed by the headquarters on file, and Pass or Fail into its column J if the draw did not reach it.
 5. Repeat steps 2 to 4 for Elma Electronic AG, against Wetzikon, Switzerland, reading whether the cited page describes the firm at elma.com or another Elma.
 6. For each Fail in J3 to J12, open the supplier's website from column C, find its contact, imprint or about page, and type that page's address and the city and country it states into column L.
@@ -223,8 +225,8 @@ If a key page no longer names the headquarters on file, stop and correct the bui
 ## How to tell you are done
 
 - [ ] Show H3 to H42 filled, forty cells, each holding a city and a country.
-- [ ] Show the prompt in the prompt box before Fill is clicked, naming column B and column C.
-- [ ] Show column I holding frozen numbers and the sheet sorted by them, with rows 1 and 2 still at the top.
+- [ ] Show the GEMINI formula in H3's formula bar, with the range B3:C3.
+- [ ] Show column I holding frozen numbers and the sheet sorted by them, with rows 1 and 2 still at the top and no cell in column H on Generating….
 - [ ] Show the Sources list open for each of rows 3, 4 and 12, and a time-lapse of the other seven.
 - [ ] Show J3 to J12 each holding Pass or Fail and K3 to K12 each holding a sentence.
 - [ ] Show the MISUMI Europa GmbH and Elma Electronic AG rows with their Sources open and the key's headquarters typed into column L.
@@ -245,7 +247,7 @@ If a key page no longer names the headquarters on file, stop and correct the bui
 | I18 | slide 4.6 | Hand over a filled column with one line: how many cells checked at random, how many matched, and what we did about the rest; a "last generated" date helps spot stale answers |
 | C2 | slide 2.3 | All three failures leave a normal-looking citation behind, and the third (pages disagree) has no documented Sheets case |
 
-Tool facts: Google Sheets on the web, Fill with Gemini, as checked on 26 November 2026; the Fill and Sources labels and the 350-cell help page limit from Google's help page and its April and October 2026 announcements.
+Tool facts: Google Sheets on the web, the GEMINI function, run on screen on 27 November 2026. The formula, the bar under a filled cell with Refresh and fill and the link icon that opens Sources, a cell returned with no Sources, the run of every formula again after Sort sheet A to Z, and View, Freeze, 2 rows were all seen in that run. The key page for MISUMI Europa GmbH was read again that day and still names its European headquarters in Frankfurt am Main.
 
 What we constructed: Larkfield Components, its operations analyst, its buyers, its supplier master with notes and an unmaintained regions tab, the team's key for two planted suppliers, and the joining of the fill, a random draw, evidence sentences, a key check, a second source and the audit note in one routine run once. The forty suppliers are real public companies named by legal name and website, because the fill needs public pages; the two key entries were checked against their pages on 26 November 2026.
 
@@ -255,7 +257,7 @@ What we constructed: Larkfield Components, its operations analyst, its buyers, i
 
 We are the finance analyst at Halden Outdoor, an online retailer of outdoor gear that is opening sixty new countries over 2027 and 2028. The finance controller sets local list prices from one country sheet, and needs two columns filled for every country by Friday: the currency and the standard sales tax rate. A wrong currency sends a price list out in money the customer does not use. A wrong tax rate goes straight into every local price, and the controller signs off what goes into the pricing model.
 
-Fill with Gemini, on Google Sheets on the web, fills both columns in minutes and attaches the web pages it used to each cell. The finance director has already written down how much checking each kind of column gets. We turn that policy into a Checking tab inside the sheet: it reads any filled column and says how many cells to open, what a clean result would rule out, how long the check takes, and when the column should not have been filled at all. The currency column gets the sample its tier asks for. The tax rate column is held against the tax team's own rate table.
+The GEMINI function in Google Sheets on the web fills both columns in minutes, one formula copied down each column, and attaches the web pages it used to each cell. The finance director has already written down how much checking each kind of column gets. We turn that policy into a Checking tab inside the sheet: it reads any filled column and says how many cells to open, what a clean result would rule out, how long the check takes, and when the column should not have been filled at all. The currency column gets the sample its tier asks for. The tax rate column is held against the tax team's own rate table.
 
 Part 1 builds the Checking tab from the finance director's policy. Part 2 fills currency and tax rate for sixty countries and lets the tab count the cells. Part 3 runs the tab on the currency column: a random draw, the sources of each sampled cell, and a pass or fail for each. Part 4 audits the tax column against the tax team's table and records the tier's answer for each column.
 
@@ -270,7 +272,8 @@ The finished walkthrough runs about 12 minutes. It draws on segment 1 of the vid
 | Ceiling | The highest error rate a clean result still allows. The tab works it out: 45.1% after five clean random cells, 9.5% after thirty. |
 | Random draw | A random number for every country, frozen, then the thirty lowest numbers taken as the sample. Every country has the same chance of being checked. |
 | Freeze | Pasting the random numbers back over themselves as plain values (Ctrl+Shift+V), so they stop changing while we work. |
-| Sources | What Sheets shows when we click into a filled cell, hover over the value and click Sources: the pages Gemini used for that cell. |
+| GEMINI formula | =GEMINI(prompt, cells): Gemini in Sheets answers the prompt for the cells given and attaches the pages it used. Sheets runs it again when Refresh and fill is clicked under the cell, which replaces the value. |
+| Sources | What Sheets shows when we click into a filled cell, hover over the value and click the link icon with the page count: the pages Gemini used for that cell. |
 | Standard rate | The main VAT or GST rate a country charges on most goods, as the tax team's table gives it, in percent. |
 | Tax team's table | `02_Tax_Rate_Table.xlsx`: Halden's approved standard rates for the sixty countries, in force on 1 November 2026, signed off on 3 November 2026. |
 | Launch wave | When Halden opens a country: Wave 1 in the first half of 2027, Wave 2 in the second half, Wave 3 in 2028. The sheet lists Wave 1 first. |
@@ -314,7 +317,7 @@ The finance controller at Halden Outdoor. They set each country's local list pri
     | Any failed sampled cell sends the whole column to a cell-by-cell check | `03_Checking_Policy.docx`, the second paragraph after the tiers table |
 
 7. Upload `01_Country_Sheet.xlsx` to Google Drive, open it with Google Sheets on the web, and save it as a Google Sheets file through File, Save as Google Sheets `[confirm label]`. Name it "Halden country sheet". Keep the uploaded file as the clean copy for retakes.
-8. Open Google Sheets on the web, Fill with Gemini, with an account on an eligible plan (Workspace Business Standard or Plus, Enterprise Standard or Plus, Google AI Pro or Ultra, Google AI Pro for Education, or the AI Expanded Access add-on; Google AI Pro is $19.99 a month as checked on 26 November 2026). Select two empty cells and confirm Fill appears. Fill in a scratch cell, then click into it, hover and confirm Sources opens. There is no fallback surface: when Fill or Sources is missing, the recording waits. It runs on the web only. Each fill in this case is 60 cells, well under the 350 cells Google's help page allows. Mark any label you could not see `[confirm label]`.
+8. Open Google Sheets on the web, GEMINI function, with an account on an eligible plan (Workspace Business Standard or Plus, Enterprise Standard or Plus, Google AI Pro or Ultra, Google AI Pro for Education, or the AI Expanded Access add-on; Google AI Pro is $19.99 a month as checked on 26 November 2026). In a scratch cell, type =GEMINI("Name the capital of France") and press Enter. When it returns a value, click it, hover, and confirm the bar under it shows Refresh and fill and a link icon with a page count; then delete it. There is no fallback surface: when the formula shows #NAME?, the recording waits. It runs on the web only. Mark any label you could not see `[confirm label]`.
 9. Keep out of frame: the account's email address, other Drive files, browser bookmarks and notifications. Between takes, delete the Checking and imported tabs and start again from a fresh Google Sheets copy of `01_Country_Sheet.xlsx`, because a fill cannot be undone.
 
 ### Planted, for the person recording only
@@ -329,7 +332,7 @@ The finance controller at Halden Outdoor. They set each country's local list pri
 
 ### Part 1: Build the Checking tab from the policy
 
-This Part turns the finance director's checking policy into a tab inside the country sheet, before Fill with Gemini fills anything. It comes first so the tiers, the ceilings and the time per cell are fixed before any value exists to be pleased with. The tab's counts read zero at the end of this Part.
+This Part turns the finance director's checking policy into a tab inside the country sheet, before Gemini fills anything. It comes first so the tiers, the ceilings and the time per cell are fixed before any value exists to be pleased with. The tab's counts read zero at the end of this Part.
 
 1. Open "Halden country sheet" in Google Sheets on the web and show the Countries tab: sixty rows, Currency and Standard tax rate (%) empty.
 2. Open `03_Checking_Policy.docx` in Word beside the browser and scroll to "The four tiers".
@@ -381,7 +384,7 @@ If a cell shows #NAME? or a parse error, compare it with the block character by 
 #### Voiceover for Part 1
 
 - V1 (step 1, experience): We're the finance analyst at Halden Outdoor, an online retailer opening sixty new countries. By Friday the finance controller needs every country's currency and standard sales tax rate, because local list prices get set from this sheet.
-- V2 (step 1, experience): Fill with Gemini can put both columns in for us in minutes. What we can't say yet is how much of each column we'd have to check before anyone puts a price on it.
+- V2 (step 1, experience): Gemini in Sheets can put both columns in for us in minutes. What we can't say yet is how much of each column we'd have to check before anyone puts a price on it.
 - V3 (step 2, setup): Our finance director's memo sets four tiers by what a column is used for. We're copying those tiers into the sheet, so every filled column gets the same answer.
 - V4 (step 3, setup): Add a tab and call it Checking. It sits beside the country list and reads from it.
 - V5 (step 4, setup): Type the four tiers from the memo, each with the number of cells it asks us to open, and whether Gemini fills that kind of column at all.
@@ -391,41 +394,40 @@ If a cell shows #NAME? or a parse error, compare it with the block character by 
 
 ### Part 2: Fill currency and tax rate for sixty countries
 
-This Part runs Fill with Gemini twice on the Countries tab, once per column, and lets the Checking tab count what arrived. Each fill is sixty cells, under the help page's limit. The tax rate is filled against the policy on purpose, so the audit has something to hold against the tax team's table.
+This Part runs the GEMINI function twice on the Countries tab, once per column, and lets the Checking tab count what arrived. The tax rate is filled against the policy on purpose, so the audit has something to hold against the tax team's table.
 
-1. Go to the Countries tab and select D2:D61, the sixty empty currency cells.
-2. Click Fill, the Fill with Gemini button that appears beside an empty selection, and choose to write your own prompt `[confirm label]`.
-3. Paste the currency prompt.
+1. Go to the Countries tab and click D2, the first empty currency cell.
+2. Paste the currency formula, our prompt inside the GEMINI function, and press Enter. Wait until D2 shows a code.
 
 ::: prompt Prompt 1 (from prompts/Case2_Prompts.md): the currency fill
-For the country named in column A of this row, give the three-letter code of the currency that is legal tender there today (for example EUR or JPY). Return the code only, with no other words.
+D2: =GEMINI("For the country named in this row, give the three-letter code of the currency that is legal tender there today (for example EUR or JPY). Return the code only, with no other words.", A2)
 :::
 
-4. Click Generate and Insert `[confirm label]` and wait until all sixty cells hold a value. Capture the column filling and then the full column.
-5. Select E2:E61, click Fill, choose to write your own prompt `[confirm label]`, and paste the tax rate prompt.
+3. Click D2 and press Ctrl+C. Click the Name box above column A, type D3:D61, press Enter, and press Ctrl+V. Wait until no cell in column D shows Generating…. Capture the column filling and then the full column.
+4. Click E2, paste the tax rate formula and press Enter.
 
 ::: prompt Prompt 2 (from prompts/Case2_Prompts.md): the tax rate fill
-For the country named in column A of this row, give the standard VAT or GST rate in force today, as a number with no % sign (for example 19 or 25.5). Return the number only, with no other words.
+E2: =GEMINI("For the country named in this row, give the standard VAT or GST rate in force today, as a number with no % sign (for example 19 or 25.5). Return the number only, with no other words.", A2)
 :::
 
-6. Click Generate and Insert `[confirm label]`, wait until all sixty cells hold a value, then click D2 and E2 in turn so the United Kingdom's values show in the formula bar.
-7. Run the shape check: D2:D61 and E2:E61 each hold sixty values with no blank cell, and on the Checking tab C14 and C15 now read 60.
+5. Copy E2 into E3:E61 the same way, wait until no cell in column E shows Generating…, then click D2 and E2 in turn so the United Kingdom's values show in the formula bar.
+6. Run the shape check: D2:D61 and E2:E61 each hold sixty values with no blank cell, and on the Checking tab C14 and C15 now read 60.
 
 #### If it does something else
 
-If Fill fills fewer than sixty cells, select the empty ones and fill again with the same prompt, and keep the capture. If cells hold sentences instead of a code or a number, keep them: the audit reads them. If Fill is missing, stop; the recording waits.
+If a cell stays on Generating… for more than two minutes, click it, hover and click Refresh and fill, and keep the capture. If cells hold sentences instead of a code or a number, keep them: the audit reads them. If the formula shows #NAME?, stop; the recording waits.
 
 #### Voiceover for Part 2
 
-- V9 (step 1, mechanism): We select the sixty empty currency cells. One column at a time keeps each fill well under the number of cells Google's help page says one fill generates.
-- V10 (step 3, mechanism): We ask for a three-letter code and nothing else, so a wrong currency has no sentence to hide in.
-- V11 (step 5, mechanism): The tax rate gets the same treatment, a bare number. Our memo says this column should never be filled, and we fill it anyway, because the controller's first question is what Gemini would have given us.
-- V12 (step 6, mechanism): Both columns are full. [after the run: how long the two fills took, and the currency and rate the United Kingdom's row now holds.]
-- V13 (step 7, mechanism): The Checking tab has counted them: [after the run: the counts in C14 and C15]. Every one of those cells looks equally finished, and the tab now knows how many there are to vouch for.
+- V9 (step 1, mechanism): We start with the sixty empty currency cells. One column at a time keeps each fill tied to one prompt.
+- V10 (step 2, mechanism): We ask for a three-letter code and nothing else, so a wrong currency has no sentence to hide in.
+- V11 (step 4, mechanism): The tax rate gets the same treatment, a bare number. Our memo says this column should never be filled, and we fill it anyway, because the controller's first question is what Gemini would have given us.
+- V12 (step 5, mechanism): Both columns are full. [after the run: how long the two fills took, and the currency and rate the United Kingdom's row now holds.]
+- V13 (step 6, mechanism): The Checking tab has counted them: [after the run: the counts in C14 and C15]. Every one of those cells looks equally finished, and the tab now knows how many there are to vouch for.
 
 ### Part 3: Run the tab on the currency column
 
-This Part draws the thirty currency cells the working-list tier asks for, freezes the draw, and checks each sampled cell against the pages Fill with Gemini attached to it. Capture the first three checks in full and the remaining twenty-seven as a time-lapse. The pass or fail for each goes in the Checking tab.
+This Part draws the thirty currency cells the working-list tier asks for, freezes the draw, and checks each sampled cell against the pages Gemini attached to it. Nothing in this Part sorts the Countries tab, so the filled values stay as Part 2 left them. Capture the first three checks in full and the remaining twenty-seven as a time-lapse. The pass or fail for each goes in the Checking tab.
 
 1. On the Countries tab, type the draw into F1 and F2.
 
@@ -448,7 +450,7 @@ M33: =COUNTIF(M2:M31,"Pass")
 :::
 
 5. Check I2:L31: thirty countries, each with its region, wave and filled currency, in draw order.
-6. Find the first sampled country on the Countries tab with Ctrl+F, click its Currency cell, hover over the value and click Sources, then open the cited page.
+6. Find the first sampled country on the Countries tab with Ctrl+F, click its Currency cell, hover over the value, and in the bar under the cell click the link icon with the page count, then open the cited page. Leave Refresh and fill alone: it runs the GEMINI function again and replaces the value.
 7. Read the page for the currency in use in that country today, then type Pass in M2 on the Checking tab if the page states the filled code's currency as current, or Fail if it does not.
 8. Repeat steps 6 and 7 for the second and third sampled countries, captured in full.
 9. Repeat steps 6 and 7 for the remaining twenty-seven, captured as a time-lapse, and note how many minutes the thirty took.
@@ -456,7 +458,7 @@ M33: =COUNTIF(M2:M31,"Pass")
 
 #### If it does something else
 
-If a cell shows no Sources, mark it Fail with "no source" beside it and keep the capture. If the cited page is not in a language you read, mark it Fail. If the random numbers change after step 2, take the Part again from step 1.
+If the bar under a cell shows no link icon, the cell has no Sources: mark it Fail with "no source" beside it and keep the capture. If Refresh and fill gets clicked by mistake, check the new value and keep the capture. If the cited page is not in a language you read, mark it Fail. If the random numbers change after step 2, take the Part again from step 1.
 
 #### Voiceover for Part 3
 
@@ -470,7 +472,7 @@ If a cell shows no Sources, mark it Fail with "no source" beside it and keep the
 
 ### Part 4: Audit the tax column against the tax team's table
 
-This Part brings in the tax team's signed-off rate table, takes each country's rate from it by lookup, and compares it with what Fill with Gemini filled. It checks every audit fact, traces every differing row to its source, searches the filled columns for anything no file holds, and records the tier's answer for both columns.
+This Part brings in the tax team's signed-off rate table, takes each country's rate from it by lookup, and compares it with what the GEMINI formulas returned. It checks every audit fact, traces every differing row to its source, searches the filled columns for anything no file holds, and records the tier's answer for both columns.
 
 1. Click File, Import, Upload `[confirm label]`, choose `02_Tax_Rate_Table.xlsx`, and pick Insert new sheet(s) `[confirm label]`.
 2. Check the Sign-off tab: rates in force on 1 November 2026, signed off by the Halden tax team on 3 November 2026, 60 countries.
@@ -496,14 +498,14 @@ H15: =COUNTIF(Countries!H2:H61,"Differs")&" of 60 differ from the tax team's tab
 
 6. Check each audit fact digit by digit with `02_Tax_Rate_Table.xlsx` and `03_Checking_Policy.docx` open: Romania's 21 in G38, the United States' 0 in G14 and its note, the Bulgaria note against the filled currency in D39, B8 and B11 against the memo's ceilings, and A2:C5 against the memo's four tiers.
 7. On the Countries tab, click Data, Create a filter `[confirm label]`, and filter column H to show only Differs.
-8. For each row that reads Differs, click its Standard tax rate cell, hover, click Sources, and read the rate and date on the cited page.
+8. For each row that reads Differs, click its Standard tax rate cell, hover, click the link icon with the page count, and read the rate and date on the cited page.
 9. Clear the filter and scan D2:E61 for any value that is something other than a three-letter code or a bare number, such as a word, a range or a state tax; no source file holds such a value, so note each row.
 10. Read row 15 of the Checking tab: H15's count beside G15's answer for the tax rate.
 11. Rename G1 to "Tax rate for pricing (tax team table)" and E1 to "Tax rate as filled by Gemini (not for pricing)".
 
 #### If it does something else
 
-If G shows #N/A, the imported tab's name differs from 'Standard rates'; rename the tab to match and keep the capture. If a filled rate reads Differs only because it carries a % sign or a word, keep it as Differs and say so.
+If G shows #N/A, the imported tab's name differs from 'Standard rates'; rename the tab to match and keep the capture. If a filled rate reads Differs only because it carries a % sign or a word, keep it as Differs and say so. If the filter sends cells in columns D or E back to Generating…, wait for the values, read H again, and say so in the note.
 
 #### Voiceover for Part 4
 
@@ -521,7 +523,7 @@ If G shows #N/A, the imported tab's name differs from 'Standard rates'; rename t
 
 - [ ] Show the Checking tab's policy table, its ceiling table reading 45.1%, 25.9%, 13.9% and 9.5%, and its column table.
 - [ ] Show C14 and C15 reading 0 at the end of Part 1 and the filled counts at the end of Part 2.
-- [ ] Capture both fills on the Countries tab, sixty cells each, from Fill to the full column.
+- [ ] Capture both fills on the Countries tab, sixty cells each, from the formula in row 2 to the full column.
 - [ ] Show the frozen draw in F2 as a plain number in the formula bar.
 - [ ] Show thirty sampled countries in I2:L31, each with Pass or Fail in column M and the count in M33.
 - [ ] Open Sources on screen for at least three sampled currency cells, with the cited page in frame.
@@ -542,7 +544,7 @@ If G shows #N/A, the imported tab's name differs from 'Standard rates'; rename t
 | I17 | slide 4.4 | Checking tiers by use: a first look gets five cells; a working list gets thirty; a figure that changes a decision gets every source; a figure we must defend gets a formula, with Gemini only labelling around it |
 | C8 | slide 4.4 | A figure we must defend has no formula trail when Gemini fills it, so it should not be filled |
 
-Tool facts: Google Sheets on the web, Fill with Gemini, as checked on 26 November 2026. The Fill entry point, the Sources view and the 350-cell help page limit are from Google's help page and announcements; every other screen label is marked `[confirm label]`.
+Tool facts: Google Sheets on the web, the GEMINI function, run on screen in Case study 1 on 27 November 2026: the formula, the bar under a filled cell with Refresh and fill and the link icon that opens Sources, and a cell returned with no Sources were all seen in that run. This case's own steps have not yet been run on screen, and every other screen label is marked `[confirm label]`.
 
 What we constructed: Halden Outdoor, its finance director's checking policy, its tax team's signed-off rate table and its sixty-country sheet are ours; the countries and their standard rates are real, checked on 26 November 2026 against PwC Worldwide Tax Summaries. The Checking tab, which joins the video's checking tiers, ceiling figures, time per cell, cell count and random draw in one reusable tab, is ours.
 

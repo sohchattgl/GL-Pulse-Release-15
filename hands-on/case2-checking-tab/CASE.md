@@ -4,7 +4,7 @@
 
 We are the finance analyst at Halden Outdoor, an online retailer of outdoor gear that is opening sixty new countries over 2027 and 2028. The finance controller sets local list prices from one country sheet, and needs two columns filled for every country by Friday: the currency and the standard sales tax rate. A wrong currency sends a price list out in money the customer does not use. A wrong tax rate goes straight into every local price, and the controller signs off what goes into the pricing model.
 
-Fill with Gemini, on Google Sheets on the web, fills both columns in minutes and attaches the web pages it used to each cell. The finance director has already written down how much checking each kind of column gets. We turn that policy into a Checking tab inside the sheet: it reads any filled column and says how many cells to open, what a clean result would rule out, how long the check takes, and when the column should not have been filled at all. The currency column gets the sample its tier asks for. The tax rate column is held against the tax team's own rate table.
+The GEMINI function in Google Sheets on the web fills both columns in minutes, one formula copied down each column, and attaches the web pages it used to each cell. The finance director has already written down how much checking each kind of column gets. We turn that policy into a Checking tab inside the sheet: it reads any filled column and says how many cells to open, what a clean result would rule out, how long the check takes, and when the column should not have been filled at all. The currency column gets the sample its tier asks for. The tax rate column is held against the tax team's own rate table.
 
 Part 1 builds the Checking tab from the finance director's policy. Part 2 fills currency and tax rate for sixty countries and lets the tab count the cells. Part 3 runs the tab on the currency column: a random draw, the sources of each sampled cell, and a pass or fail for each. Part 4 audits the tax column against the tax team's table and records the tier's answer for each column.
 
@@ -19,7 +19,8 @@ The finished walkthrough runs about 12 minutes. It draws on segment 1 of the vid
 | Ceiling | The highest error rate a clean result still allows. The tab works it out: 45.1% after five clean random cells, 9.5% after thirty. |
 | Random draw | A random number for every country, frozen, then the thirty lowest numbers taken as the sample. Every country has the same chance of being checked. |
 | Freeze | Pasting the random numbers back over themselves as plain values (Ctrl+Shift+V), so they stop changing while we work. |
-| Sources | What Sheets shows when we click into a filled cell, hover over the value and click Sources: the pages Gemini used for that cell. |
+| GEMINI formula | =GEMINI(prompt, cells): Gemini in Sheets answers the prompt for the cells given and attaches the pages it used. Sheets runs it again when Refresh and fill is clicked under the cell, which replaces the value. |
+| Sources | What Sheets shows when we click into a filled cell, hover over the value and click the link icon with the page count: the pages Gemini used for that cell. |
 | Standard rate | The main VAT or GST rate a country charges on most goods, as the tax team's table gives it, in percent. |
 | Tax team's table | `02_Tax_Rate_Table.xlsx`: Halden's approved standard rates for the sixty countries, in force on 1 November 2026, signed off on 3 November 2026. |
 | Launch wave | When Halden opens a country: Wave 1 in the first half of 2027, Wave 2 in the second half, Wave 3 in 2028. The sheet lists Wave 1 first. |
@@ -63,7 +64,7 @@ The finance controller at Halden Outdoor. They set each country's local list pri
     | Any failed sampled cell sends the whole column to a cell-by-cell check | `03_Checking_Policy.docx`, the second paragraph after the tiers table |
 
 7. Upload `01_Country_Sheet.xlsx` to Google Drive, open it with Google Sheets on the web, and save it as a Google Sheets file through File, Save as Google Sheets `[confirm label]`. Name it "Halden country sheet". Keep the uploaded file as the clean copy for retakes.
-8. Open Google Sheets on the web, Fill with Gemini, with an account on an eligible plan (Workspace Business Standard or Plus, Enterprise Standard or Plus, Google AI Pro or Ultra, Google AI Pro for Education, or the AI Expanded Access add-on; Google AI Pro is $19.99 a month as checked on 26 November 2026). Select two empty cells and confirm Fill appears. Fill in a scratch cell, then click into it, hover and confirm Sources opens. There is no fallback surface: when Fill or Sources is missing, the recording waits. It runs on the web only. Each fill in this case is 60 cells, well under the 350 cells Google's help page allows. Mark any label you could not see `[confirm label]`.
+8. Open Google Sheets on the web, GEMINI function, with an account on an eligible plan (Workspace Business Standard or Plus, Enterprise Standard or Plus, Google AI Pro or Ultra, Google AI Pro for Education, or the AI Expanded Access add-on; Google AI Pro is $19.99 a month as checked on 26 November 2026). In a scratch cell, type =GEMINI("Name the capital of France") and press Enter. When it returns a value, click it, hover, and confirm the bar under it shows Refresh and fill and a link icon with a page count; then delete it. There is no fallback surface: when the formula shows #NAME?, the recording waits. It runs on the web only. Mark any label you could not see `[confirm label]`.
 9. Keep out of frame: the account's email address, other Drive files, browser bookmarks and notifications. Between takes, delete the Checking and imported tabs and start again from a fresh Google Sheets copy of `01_Country_Sheet.xlsx`, because a fill cannot be undone.
 
 ### Planted, for the person recording only
@@ -78,7 +79,7 @@ The finance controller at Halden Outdoor. They set each country's local list pri
 
 ### Part 1: Build the Checking tab from the policy
 
-This Part turns the finance director's checking policy into a tab inside the country sheet, before Fill with Gemini fills anything. It comes first so the tiers, the ceilings and the time per cell are fixed before any value exists to be pleased with. The tab's counts read zero at the end of this Part.
+This Part turns the finance director's checking policy into a tab inside the country sheet, before Gemini fills anything. It comes first so the tiers, the ceilings and the time per cell are fixed before any value exists to be pleased with. The tab's counts read zero at the end of this Part.
 
 1. Open "Halden country sheet" in Google Sheets on the web and show the Countries tab: sixty rows, Currency and Standard tax rate (%) empty.
 2. Open `03_Checking_Policy.docx` in Word beside the browser and scroll to "The four tiers".
@@ -130,7 +131,7 @@ If a cell shows #NAME? or a parse error, compare it with the block character by 
 #### Voiceover for Part 1
 
 - V1 (step 1, experience): We're the finance analyst at Halden Outdoor, an online retailer opening sixty new countries. By Friday the finance controller needs every country's currency and standard sales tax rate, because local list prices get set from this sheet.
-- V2 (step 1, experience): Fill with Gemini can put both columns in for us in minutes. What we can't say yet is how much of each column we'd have to check before anyone puts a price on it.
+- V2 (step 1, experience): Gemini in Sheets can put both columns in for us in minutes. What we can't say yet is how much of each column we'd have to check before anyone puts a price on it.
 - V3 (step 2, setup): Our finance director's memo sets four tiers by what a column is used for. We're copying those tiers into the sheet, so every filled column gets the same answer.
 - V4 (step 3, setup): Add a tab and call it Checking. It sits beside the country list and reads from it.
 - V5 (step 4, setup): Type the four tiers from the memo, each with the number of cells it asks us to open, and whether Gemini fills that kind of column at all.
@@ -140,41 +141,40 @@ If a cell shows #NAME? or a parse error, compare it with the block character by 
 
 ### Part 2: Fill currency and tax rate for sixty countries
 
-This Part runs Fill with Gemini twice on the Countries tab, once per column, and lets the Checking tab count what arrived. Each fill is sixty cells, under the help page's limit. The tax rate is filled against the policy on purpose, so the audit has something to hold against the tax team's table.
+This Part runs the GEMINI function twice on the Countries tab, once per column, and lets the Checking tab count what arrived. The tax rate is filled against the policy on purpose, so the audit has something to hold against the tax team's table.
 
-1. Go to the Countries tab and select D2:D61, the sixty empty currency cells.
-2. Click Fill, the Fill with Gemini button that appears beside an empty selection, and choose to write your own prompt `[confirm label]`.
-3. Paste the currency prompt.
+1. Go to the Countries tab and click D2, the first empty currency cell.
+2. Paste the currency formula, our prompt inside the GEMINI function, and press Enter. Wait until D2 shows a code.
 
 ::: prompt Prompt 1 (from prompts/Case2_Prompts.md): the currency fill
-For the country named in column A of this row, give the three-letter code of the currency that is legal tender there today (for example EUR or JPY). Return the code only, with no other words.
+D2: =GEMINI("For the country named in this row, give the three-letter code of the currency that is legal tender there today (for example EUR or JPY). Return the code only, with no other words.", A2)
 :::
 
-4. Click Generate and Insert `[confirm label]` and wait until all sixty cells hold a value. Capture the column filling and then the full column.
-5. Select E2:E61, click Fill, choose to write your own prompt `[confirm label]`, and paste the tax rate prompt.
+3. Click D2 and press Ctrl+C. Click the Name box above column A, type D3:D61, press Enter, and press Ctrl+V. Wait until no cell in column D shows Generating…. Capture the column filling and then the full column.
+4. Click E2, paste the tax rate formula and press Enter.
 
 ::: prompt Prompt 2 (from prompts/Case2_Prompts.md): the tax rate fill
-For the country named in column A of this row, give the standard VAT or GST rate in force today, as a number with no % sign (for example 19 or 25.5). Return the number only, with no other words.
+E2: =GEMINI("For the country named in this row, give the standard VAT or GST rate in force today, as a number with no % sign (for example 19 or 25.5). Return the number only, with no other words.", A2)
 :::
 
-6. Click Generate and Insert `[confirm label]`, wait until all sixty cells hold a value, then click D2 and E2 in turn so the United Kingdom's values show in the formula bar.
-7. Run the shape check: D2:D61 and E2:E61 each hold sixty values with no blank cell, and on the Checking tab C14 and C15 now read 60.
+5. Copy E2 into E3:E61 the same way, wait until no cell in column E shows Generating…, then click D2 and E2 in turn so the United Kingdom's values show in the formula bar.
+6. Run the shape check: D2:D61 and E2:E61 each hold sixty values with no blank cell, and on the Checking tab C14 and C15 now read 60.
 
 #### If it does something else
 
-If Fill fills fewer than sixty cells, select the empty ones and fill again with the same prompt, and keep the capture. If cells hold sentences instead of a code or a number, keep them: the audit reads them. If Fill is missing, stop; the recording waits.
+If a cell stays on Generating… for more than two minutes, click it, hover and click Refresh and fill, and keep the capture. If cells hold sentences instead of a code or a number, keep them: the audit reads them. If the formula shows #NAME?, stop; the recording waits.
 
 #### Voiceover for Part 2
 
-- V9 (step 1, mechanism): We select the sixty empty currency cells. One column at a time keeps each fill well under the number of cells Google's help page says one fill generates.
-- V10 (step 3, mechanism): We ask for a three-letter code and nothing else, so a wrong currency has no sentence to hide in.
-- V11 (step 5, mechanism): The tax rate gets the same treatment, a bare number. Our memo says this column should never be filled, and we fill it anyway, because the controller's first question is what Gemini would have given us.
-- V12 (step 6, mechanism): Both columns are full. [after the run: how long the two fills took, and the currency and rate the United Kingdom's row now holds.]
-- V13 (step 7, mechanism): The Checking tab has counted them: [after the run: the counts in C14 and C15]. Every one of those cells looks equally finished, and the tab now knows how many there are to vouch for.
+- V9 (step 1, mechanism): We start with the sixty empty currency cells. One column at a time keeps each fill tied to one prompt.
+- V10 (step 2, mechanism): We ask for a three-letter code and nothing else, so a wrong currency has no sentence to hide in.
+- V11 (step 4, mechanism): The tax rate gets the same treatment, a bare number. Our memo says this column should never be filled, and we fill it anyway, because the controller's first question is what Gemini would have given us.
+- V12 (step 5, mechanism): Both columns are full. [after the run: how long the two fills took, and the currency and rate the United Kingdom's row now holds.]
+- V13 (step 6, mechanism): The Checking tab has counted them: [after the run: the counts in C14 and C15]. Every one of those cells looks equally finished, and the tab now knows how many there are to vouch for.
 
 ### Part 3: Run the tab on the currency column
 
-This Part draws the thirty currency cells the working-list tier asks for, freezes the draw, and checks each sampled cell against the pages Fill with Gemini attached to it. Capture the first three checks in full and the remaining twenty-seven as a time-lapse. The pass or fail for each goes in the Checking tab.
+This Part draws the thirty currency cells the working-list tier asks for, freezes the draw, and checks each sampled cell against the pages Gemini attached to it. Nothing in this Part sorts the Countries tab, so the filled values stay as Part 2 left them. Capture the first three checks in full and the remaining twenty-seven as a time-lapse. The pass or fail for each goes in the Checking tab.
 
 1. On the Countries tab, type the draw into F1 and F2.
 
@@ -197,7 +197,7 @@ M33: =COUNTIF(M2:M31,"Pass")
 :::
 
 5. Check I2:L31: thirty countries, each with its region, wave and filled currency, in draw order.
-6. Find the first sampled country on the Countries tab with Ctrl+F, click its Currency cell, hover over the value and click Sources, then open the cited page.
+6. Find the first sampled country on the Countries tab with Ctrl+F, click its Currency cell, hover over the value, and in the bar under the cell click the link icon with the page count, then open the cited page. Leave Refresh and fill alone: it runs the GEMINI function again and replaces the value.
 7. Read the page for the currency in use in that country today, then type Pass in M2 on the Checking tab if the page states the filled code's currency as current, or Fail if it does not.
 8. Repeat steps 6 and 7 for the second and third sampled countries, captured in full.
 9. Repeat steps 6 and 7 for the remaining twenty-seven, captured as a time-lapse, and note how many minutes the thirty took.
@@ -205,7 +205,7 @@ M33: =COUNTIF(M2:M31,"Pass")
 
 #### If it does something else
 
-If a cell shows no Sources, mark it Fail with "no source" beside it and keep the capture. If the cited page is not in a language you read, mark it Fail. If the random numbers change after step 2, take the Part again from step 1.
+If the bar under a cell shows no link icon, the cell has no Sources: mark it Fail with "no source" beside it and keep the capture. If Refresh and fill gets clicked by mistake, check the new value and keep the capture. If the cited page is not in a language you read, mark it Fail. If the random numbers change after step 2, take the Part again from step 1.
 
 #### Voiceover for Part 3
 
@@ -219,7 +219,7 @@ If a cell shows no Sources, mark it Fail with "no source" beside it and keep the
 
 ### Part 4: Audit the tax column against the tax team's table
 
-This Part brings in the tax team's signed-off rate table, takes each country's rate from it by lookup, and compares it with what Fill with Gemini filled. It checks every audit fact, traces every differing row to its source, searches the filled columns for anything no file holds, and records the tier's answer for both columns.
+This Part brings in the tax team's signed-off rate table, takes each country's rate from it by lookup, and compares it with what the GEMINI formulas returned. It checks every audit fact, traces every differing row to its source, searches the filled columns for anything no file holds, and records the tier's answer for both columns.
 
 1. Click File, Import, Upload `[confirm label]`, choose `02_Tax_Rate_Table.xlsx`, and pick Insert new sheet(s) `[confirm label]`.
 2. Check the Sign-off tab: rates in force on 1 November 2026, signed off by the Halden tax team on 3 November 2026, 60 countries.
@@ -245,14 +245,14 @@ H15: =COUNTIF(Countries!H2:H61,"Differs")&" of 60 differ from the tax team's tab
 
 6. Check each audit fact digit by digit with `02_Tax_Rate_Table.xlsx` and `03_Checking_Policy.docx` open: Romania's 21 in G38, the United States' 0 in G14 and its note, the Bulgaria note against the filled currency in D39, B8 and B11 against the memo's ceilings, and A2:C5 against the memo's four tiers.
 7. On the Countries tab, click Data, Create a filter `[confirm label]`, and filter column H to show only Differs.
-8. For each row that reads Differs, click its Standard tax rate cell, hover, click Sources, and read the rate and date on the cited page.
+8. For each row that reads Differs, click its Standard tax rate cell, hover, click the link icon with the page count, and read the rate and date on the cited page.
 9. Clear the filter and scan D2:E61 for any value that is something other than a three-letter code or a bare number, such as a word, a range or a state tax; no source file holds such a value, so note each row.
 10. Read row 15 of the Checking tab: H15's count beside G15's answer for the tax rate.
 11. Rename G1 to "Tax rate for pricing (tax team table)" and E1 to "Tax rate as filled by Gemini (not for pricing)".
 
 #### If it does something else
 
-If G shows #N/A, the imported tab's name differs from 'Standard rates'; rename the tab to match and keep the capture. If a filled rate reads Differs only because it carries a % sign or a word, keep it as Differs and say so.
+If G shows #N/A, the imported tab's name differs from 'Standard rates'; rename the tab to match and keep the capture. If a filled rate reads Differs only because it carries a % sign or a word, keep it as Differs and say so. If the filter sends cells in columns D or E back to Generating…, wait for the values, read H again, and say so in the note.
 
 #### Voiceover for Part 4
 
@@ -270,7 +270,7 @@ If G shows #N/A, the imported tab's name differs from 'Standard rates'; rename t
 
 - [ ] Show the Checking tab's policy table, its ceiling table reading 45.1%, 25.9%, 13.9% and 9.5%, and its column table.
 - [ ] Show C14 and C15 reading 0 at the end of Part 1 and the filled counts at the end of Part 2.
-- [ ] Capture both fills on the Countries tab, sixty cells each, from Fill to the full column.
+- [ ] Capture both fills on the Countries tab, sixty cells each, from the formula in row 2 to the full column.
 - [ ] Show the frozen draw in F2 as a plain number in the formula bar.
 - [ ] Show thirty sampled countries in I2:L31, each with Pass or Fail in column M and the count in M33.
 - [ ] Open Sources on screen for at least three sampled currency cells, with the cited page in frame.
@@ -291,6 +291,6 @@ If G shows #N/A, the imported tab's name differs from 'Standard rates'; rename t
 | I17 | slide 4.4 | Checking tiers by use: a first look gets five cells; a working list gets thirty; a figure that changes a decision gets every source; a figure we must defend gets a formula, with Gemini only labelling around it |
 | C8 | slide 4.4 | A figure we must defend has no formula trail when Gemini fills it, so it should not be filled |
 
-Tool facts: Google Sheets on the web, Fill with Gemini, as checked on 26 November 2026. The Fill entry point, the Sources view and the 350-cell help page limit are from Google's help page and announcements; every other screen label is marked `[confirm label]`.
+Tool facts: Google Sheets on the web, the GEMINI function, run on screen in Case study 1 on 27 November 2026: the formula, the bar under a filled cell with Refresh and fill and the link icon that opens Sources, and a cell returned with no Sources were all seen in that run. This case's own steps have not yet been run on screen, and every other screen label is marked `[confirm label]`.
 
 What we constructed: Halden Outdoor, its finance director's checking policy, its tax team's signed-off rate table and its sixty-country sheet are ours; the countries and their standard rates are real, checked on 26 November 2026 against PwC Worldwide Tax Summaries. The Checking tab, which joins the video's checking tiers, ceiling figures, time per cell, cell count and random draw in one reusable tab, is ours.
