@@ -63,8 +63,9 @@ The logistics lead receives the filled supplier master with the audit note in ce
 7. Re-check the key on the day. The key was checked against both pages on 26 November 2026. Open each URL in column E of the Key tab and confirm the page still names the headquarters in column D. If a page has moved or names another city, change the `KEY` entry in `build_materials.py`, build again, and update the audit facts before recording.
 8. Upload `01_Supplier_List.xlsx` to Google Drive and open it with Google Sheets [confirm label]. Check that rows 1 and 2 stay in place when you scroll; if they do not, use View, Freeze, 2 rows.
 9. Confirm the surface: Google Sheets on the web, GEMINI function, signed in to an account on an eligible plan with Gemini in Sheets turned on. In an empty cell to the right of the table, type =GEMINI("Say hello") and press Enter. When it returns a value, delete it. If it shows #NAME?, the account lacks the function and the recording waits; no fallback surface was confirmed at gate 0.
-10. Check every label the steps quote against the screen. Refresh and fill, the link icon with a page count, Sort sheet A to Z and View, Freeze, 2 rows were seen on screen on 27 November 2026; the upload labels are marked `[confirm label]` until you see them.
-11. Keep out of frame the account's email address and avatar, other tabs and any notification. Between takes of Part 1, upload a fresh copy of `01_Supplier_List.xlsx`; Parts 2 and 3 run on the same sheet without a reset.
+10. Check every label the steps quote against the screen. Refresh and fill, Generate and fill, the link icon with a page count, Sort sheet A to Z and View, Freeze, 2 rows were seen on screen on 27 November 2026; the upload labels are marked `[confirm label]` until you see them.
+11. Turn off Tools, Suggestion controls, Enable autocomplete. With it on, typing Pass in column J completes to the heading Pass or fail.
+12. Keep out of frame the account's email address and avatar, other tabs and any notification. Between takes of Part 1, upload a fresh copy of `01_Supplier_List.xlsx`; Parts 2 and 3 run on the same sheet without a reset.
 
 ### Planted, for the person recording only
 
@@ -87,7 +88,7 @@ H3: =GEMINI("For the company in this row, give the city and country of its headq
 :::
 
 3. Click H3 and press Ctrl+C. Click the Name box above column A, type H4:H42, press Enter, and press Ctrl+V, so the formula fills the other thirty-nine cells.
-4. Wait until no cell in column H shows Generating…, then capture. The wait is cut in the edit.
+4. Wait until no cell in column H shows Generating…, then capture. The wait is cut in the edit. Look for any cell shaded with diagonal stripes: the paste can leave a row holding the value copied from H3 without running it. Click that cell, hover and click Generate and fill, and keep the capture.
 5. Check that H3 to H42 each hold a value written as a city and a country, with no cell blank and none showing an error.
 6. Click H3 and read the formula bar: the GEMINI formula, with the range B3:C3 covering the legal name and the website.
 

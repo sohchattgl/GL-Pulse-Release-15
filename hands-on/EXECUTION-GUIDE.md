@@ -99,8 +99,9 @@ The logistics lead receives the filled supplier master with the audit note in ce
 7. Re-check the key on the day. The key was checked against both pages on 26 November 2026. Open each URL in column E of the Key tab and confirm the page still names the headquarters in column D. If a page has moved or names another city, change the `KEY` entry in `build_materials.py`, build again, and update the audit facts before recording.
 8. Upload `01_Supplier_List.xlsx` to Google Drive and open it with Google Sheets [confirm label]. Check that rows 1 and 2 stay in place when you scroll; if they do not, use View, Freeze, 2 rows.
 9. Confirm the surface: Google Sheets on the web, GEMINI function, signed in to an account on an eligible plan with Gemini in Sheets turned on. In an empty cell to the right of the table, type =GEMINI("Say hello") and press Enter. When it returns a value, delete it. If it shows #NAME?, the account lacks the function and the recording waits; no fallback surface was confirmed at gate 0.
-10. Check every label the steps quote against the screen. Refresh and fill, the link icon with a page count, Sort sheet A to Z and View, Freeze, 2 rows were seen on screen on 27 November 2026; the upload labels are marked `[confirm label]` until you see them.
-11. Keep out of frame the account's email address and avatar, other tabs and any notification. Between takes of Part 1, upload a fresh copy of `01_Supplier_List.xlsx`; Parts 2 and 3 run on the same sheet without a reset.
+10. Check every label the steps quote against the screen. Refresh and fill, Generate and fill, the link icon with a page count, Sort sheet A to Z and View, Freeze, 2 rows were seen on screen on 27 November 2026; the upload labels are marked `[confirm label]` until you see them.
+11. Turn off Tools, Suggestion controls, Enable autocomplete. With it on, typing Pass in column J completes to the heading Pass or fail.
+12. Keep out of frame the account's email address and avatar, other tabs and any notification. Between takes of Part 1, upload a fresh copy of `01_Supplier_List.xlsx`; Parts 2 and 3 run on the same sheet without a reset.
 
 ### Planted, for the person recording only
 
@@ -123,7 +124,7 @@ H3: =GEMINI("For the company in this row, give the city and country of its headq
 :::
 
 3. Click H3 and press Ctrl+C. Click the Name box above column A, type H4:H42, press Enter, and press Ctrl+V, so the formula fills the other thirty-nine cells.
-4. Wait until no cell in column H shows Generating…, then capture. The wait is cut in the edit.
+4. Wait until no cell in column H shows Generating…, then capture. The wait is cut in the edit. Look for any cell shaded with diagonal stripes: the paste can leave a row holding the value copied from H3 without running it. Click that cell, hover and click Generate and fill, and keep the capture.
 5. Check that H3 to H42 each hold a value written as a city and a country, with no cell blank and none showing an error.
 6. Click H3 and read the formula bar: the GEMINI formula, with the range B3:C3 covering the legal name and the website.
 
@@ -271,7 +272,7 @@ The finished walkthrough runs about 12 minutes. It draws on segment 1 of the vid
 | Tier | How much checking a column gets, set by what the column is used for. Currency is a working list (thirty random cells); the tax rate is a figure we must defend (no fill, a formula from an approved table). |
 | Ceiling | The highest error rate a clean result still allows. The tab works it out: 45.1% after five clean random cells, 9.5% after thirty. |
 | Random draw | A random number for every country, frozen, then the thirty lowest numbers taken as the sample. Every country has the same chance of being checked. |
-| Freeze | Pasting the random numbers back over themselves as plain values (Ctrl+Shift+V), so they stop changing while we work. |
+| Freeze | Pasting the random numbers back over themselves as plain values (Edit, Paste special, Values only), so they stop changing while we work. |
 | GEMINI formula | =GEMINI(prompt, cells): Gemini in Sheets answers the prompt for the cells given and attaches the pages it used. Sheets runs it again when Refresh and fill is clicked under the cell, which replaces the value. |
 | Sources | What Sheets shows when we click into a filled cell, hover over the value and click the link icon with the page count: the pages Gemini used for that cell. |
 | Standard rate | The main VAT or GST rate a country charges on most goods, as the tax team's table gives it, in percent. |
@@ -318,7 +319,8 @@ The finance controller at Halden Outdoor. They set each country's local list pri
 
 7. Upload `01_Country_Sheet.xlsx` to Google Drive, open it with Google Sheets on the web, and save it as a Google Sheets file through File, Save as Google Sheets `[confirm label]`. Name it "Halden country sheet". Keep the uploaded file as the clean copy for retakes.
 8. Open Google Sheets on the web, GEMINI function, with an account on an eligible plan (Workspace Business Standard or Plus, Enterprise Standard or Plus, Google AI Pro or Ultra, Google AI Pro for Education, or the AI Expanded Access add-on; Google AI Pro is $19.99 a month as checked on 26 November 2026). In a scratch cell, type =GEMINI("Name the capital of France") and press Enter. When it returns a value, click it, hover, and confirm the bar under it shows Refresh and fill and a link icon with a page count; then delete it. There is no fallback surface: when the formula shows #NAME?, the recording waits. It runs on the web only. Mark any label you could not see `[confirm label]`.
-9. Keep out of frame: the account's email address, other Drive files, browser bookmarks and notifications. Between takes, delete the Checking and imported tabs and start again from a fresh Google Sheets copy of `01_Country_Sheet.xlsx`, because a fill cannot be undone.
+9. Turn off Tools, Suggestion controls, Enable autocomplete. With it on, typing Pass in column M of the Checking tab completes to the heading Pass or fail.
+10. Keep out of frame: the account's email address, other Drive files, browser bookmarks and notifications. Between takes, delete the Checking and imported tabs and start again from a fresh Google Sheets copy of `01_Country_Sheet.xlsx`, because a fill cannot be undone.
 
 ### Planted, for the person recording only
 
@@ -403,14 +405,14 @@ This Part runs the GEMINI function twice on the Countries tab, once per column, 
 D2: =GEMINI("For the country named in this row, give the three-letter code of the currency that is legal tender there today (for example EUR or JPY). Return the code only, with no other words.", A2)
 :::
 
-3. Click D2 and press Ctrl+C. Click the Name box above column A, type D3:D61, press Enter, and press Ctrl+V. Wait until no cell in column D shows Generating…. Capture the column filling and then the full column.
+3. Click D2 and press Ctrl+C. Click the Name box above column A, type D3:D61, press Enter, and press Ctrl+V. Wait until no cell in column D shows Generating…. Capture the column filling and then the full column. Look for any cell shaded with diagonal stripes: the paste can leave a row holding the value copied from D2, and its sources, without running it. Click that cell, hover and click Generate and fill.
 4. Click E2, paste the tax rate formula and press Enter.
 
 ::: prompt Prompt 2 (from prompts/Case2_Prompts.md): the tax rate fill
 E2: =GEMINI("For the country named in this row, give the standard VAT or GST rate in force today, as a number with no % sign (for example 19 or 25.5). Return the number only, with no other words.", A2)
 :::
 
-5. Copy E2 into E3:E61 the same way, wait until no cell in column E shows Generating…, then click D2 and E2 in turn so the United Kingdom's values show in the formula bar.
+5. Copy E2 into E3:E61 the same way, wait until no cell in column E shows Generating…, run Generate and fill on any striped cell as in step 3, then click D2 and E2 in turn so the United Kingdom's values show in the formula bar.
 6. Run the shape check: D2:D61 and E2:E61 each hold sixty values with no blank cell, and on the Checking tab C14 and C15 now read 60.
 
 #### If it does something else
@@ -437,7 +439,7 @@ F1: Draw
 F2: =RANDARRAY(60)
 :::
 
-2. Select F2:F61, press Ctrl+C, then press Ctrl+Shift+V to paste the numbers back as values only.
+2. Select F2:F61, press Ctrl+C, then choose Edit, Paste special, Values only. On 27 November 2026 Ctrl+Shift+V left the RANDARRAY formula in place, so use the menu.
 3. Check F2: the formula bar shows a plain number with no formula, and the numbers stay put when you click another cell.
 4. On the Checking tab, type the sample into I1:M1, I2, L33 and M33.
 

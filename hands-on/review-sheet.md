@@ -57,6 +57,15 @@ A live run of Case study 1 on Google Sheets on the web found that Fill on this a
 
 From the partial run, before the steps were rewritten: both planted suppliers landed in the random ten, and both matched the key. Panduit (row 3 after the sort) came back with no Sources. HARTING (row 4) passed on harting.com/en-NO, "Our headquarters is located in Espelkamp". These are not the recording; the bracketed lines are still written from the real take.
 
+## Recorded on 27 November 2026
+
+Both cases were run end to end in Google Sheets on the web and published as click-through demos in the shared Supademo workspace: "GL Pulse Release 15 CS1" (27 steps) and "GL Pulse Release 15 CS2" (27 steps), with voiceover written from what each run showed.
+
+- Case study 1: 40 of 40 filled; 10 of 10 drawn rows passed; both key suppliers matched (MISUMI Europa returned as Frankfurt, Germany; Elma as Wetzikon, Switzerland).
+- Case study 2: 30 of 30 sampled currencies passed (Luxembourg, Romania and Singapore on their cited pages, the other 27 against the currency Wikipedia lists for each country); 1 of 60 tax rates differs from the tax team's table (Ireland, a stale paste citing gov.uk).
+- Deviations: the source files were typed into Sheets from `build_materials.py` rather than uploaded; the key and the rate table went in as tabs; the policy memo is not shown.
+- Written back into the steps: a paste down a column can leave a striped cell holding the copied value until Generate and fill is clicked; Ctrl+Shift+V did not freeze a RANDARRAY spill, while Edit, Paste special, Values only did; autocomplete turns a typed Pass into the heading Pass or fail.
+
 ## Across the pair
 
 - Jobs, shapes and functions differ: a supplier list for freight regions (demo, operations) and a country pricing sheet (build, finance).
